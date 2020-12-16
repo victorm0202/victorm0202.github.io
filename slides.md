@@ -1825,9 +1825,9 @@ Métricas de evaluación.
 
 La Exactitud (Accuracy) es simplemente la proporción de datos clasificados correctamente. 
 
-\begin{align*}
+$$
     Accuracy = \frac{VP+VN}{TOTAL} 
-\end{align*}
+$$
 
 donde $VP$ es el número de predicciones positivas correctamente clasificadas, $VN$ es el número de predicciones negativas correctamente clasificadas y $TOTAL$ es el número total de casos u observaciones.
 
