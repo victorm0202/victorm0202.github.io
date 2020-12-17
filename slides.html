@@ -1,64 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta charset="utf-8" />
 
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-
-<title>slides slides</title>
+<title>slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-<!-- General and theme style sheets -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/reveal.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/theme/simple.css" id="theme">
 
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-}
-
-</script>
-
-<!--[if lt IE 9]>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/html5shiv.js"></script>
-<![endif]-->
-
-<!-- Loading the mathjax macro -->
-<!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    <!-- End of mathjax configuration -->
-
-<!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -13072,133 +13021,59 @@ ul.typeahead-list  > li > a.pull-right {
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-.reveal {
-  font-size: 160%;
+body {
+  overflow: visible;
+  padding: 8px;
 }
-.reveal pre {
-  width: inherit;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-}
-.reveal pre code {
-  padding: 0px;
-}
-.reveal section img {
-  border: 0px solid black;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-}
-.reveal i {
-  font-style: normal;
-  font-family: FontAwesome;
-  font-size: 2em;
-}
-.reveal .slides {
-  text-align: left;
-}
-.reveal.fade {
-  opacity: 1;
-}
-.reveal .progress {
-  position: static;
-}
-.reveal .controls .navigate-left,
-.reveal .controls .navigate-left.enabled {
-  border-right-color: #727272;
-}
-.reveal .controls .navigate-left.enabled:hover,
-.reveal .controls .navigate-left.enabled.enabled:hover {
-  border-right-color: #dfdfdf;
-}
-.reveal .controls .navigate-right,
-.reveal .controls .navigate-right.enabled {
-  border-left-color: #727272;
-}
-.reveal .controls .navigate-right.enabled:hover,
-.reveal .controls .navigate-right.enabled.enabled:hover {
-  border-left-color: #dfdfdf;
-}
-.reveal .controls .navigate-up,
-.reveal .controls .navigate-up.enabled {
-  border-bottom-color: #727272;
-}
-.reveal .controls .navigate-up.enabled:hover,
-.reveal .controls .navigate-up.enabled.enabled:hover {
-  border-bottom-color: #dfdfdf;
-}
-.reveal .controls .navigate-down,
-.reveal .controls .navigate-down.enabled {
-  border-top-color: #727272;
-}
-.reveal .controls .navigate-down.enabled:hover,
-.reveal .controls .navigate-down.enabled.enabled:hover {
-  border-top-color: #dfdfdf;
-}
-.reveal .progress span {
-  background: #727272;
-}
-div.input_area {
-  padding: 0.06em;
-}
-div.code_cell {
-  background-color: transparent;
-}
-div.prompt {
-  width: 11ex;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  text-align: right;
-}
-div.output_area pre {
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-}
-div.output_prompt {
-  /* 5px right shift to account for margin in parent container */
-  margin: 5px 5px 0 0;
-}
-div.text_cell.rendered .rendered_html {
-  /* The H1 height seems miscalculated, we are just hidding the scrollbar */
-  overflow-y: hidden;
-}
-a.anchor-link {
-  /* There is still an anchor, we are only hidding it */
-  display: none;
-}
-.rendered_html p {
-  text-align: inherit;
-}
-::-webkit-scrollbar
-{
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar *
-{
-  background:transparent;
-}
-::-webkit-scrollbar-thumb
-{
-  background: #727272 !important;
+
+div#notebook {
+  overflow: visible;
+  border-top: none;
+}@media print {
+  div.cell {
+    display: block;
+    page-break-inside: avoid;
+  } 
+  div.output_wrapper { 
+    display: block;
+    page-break-inside: avoid; 
+  }
+  div.output { 
+    display: block;
+    page-break-inside: avoid; 
+  }
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
-</head>
-
-
+<!-- Loading mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration --></head>
 <body>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
 
-
-<div class="reveal">
-<div class="slides">
-<section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13208,7 +13083,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13220,7 +13095,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13236,14 +13111,14 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Introducci&#243;n">Introducci&#243;n<a class="anchor-link" href="#Introducci&#243;n">&#182;</a></h1>
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13253,7 +13128,7 @@ Es un campo de estudio enfocado en la interacción entre <strong>lenguaje humano
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13267,7 +13142,7 @@ Es un campo de estudio enfocado en la interacción entre <strong>lenguaje humano
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13276,7 +13151,7 @@ Es un campo de estudio enfocado en la interacción entre <strong>lenguaje humano
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13290,7 +13165,7 @@ Es un campo de estudio enfocado en la interacción entre <strong>lenguaje humano
 \end{itemize}
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13298,7 +13173,7 @@ Es un campo de estudio enfocado en la interacción entre <strong>lenguaje humano
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13306,7 +13181,7 @@ Es un campo de estudio enfocado en la interacción entre <strong>lenguaje humano
 
 </div>
 </div>
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13314,7 +13189,7 @@ Es un campo de estudio enfocado en la interacción entre <strong>lenguaje humano
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[20]:</div>
@@ -13347,7 +13222,7 @@ Es un campo de estudio enfocado en la interacción entre <strong>lenguaje humano
 </div>
 </div>
 
-</div></div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
@@ -13661,7 +13536,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13669,7 +13544,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13681,7 +13556,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13689,7 +13564,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13697,7 +13572,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13713,7 +13588,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13721,7 +13596,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13729,7 +13604,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13742,7 +13617,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13755,7 +13630,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13768,7 +13643,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13784,7 +13659,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13802,7 +13677,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13811,7 +13686,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13824,7 +13699,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13832,7 +13707,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13853,7 +13728,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13862,7 +13737,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13880,7 +13755,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 \end{itemize}
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13890,7 +13765,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13899,7 +13774,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13908,7 +13783,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13917,7 +13792,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13926,7 +13801,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13935,7 +13810,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13947,7 +13822,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13993,7 +13868,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14055,14 +13930,14 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Ejemplos-de-preprocesamiento">Ejemplos de preprocesamiento<a class="anchor-link" href="#Ejemplos-de-preprocesamiento">&#182;</a></h2>
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
@@ -14101,7 +13976,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
@@ -14147,14 +14022,14 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Representaciones-de-textos">Representaciones de textos<a class="anchor-link" href="#Representaciones-de-textos">&#182;</a></h1>
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14163,7 +14038,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[68]:</div>
@@ -14317,7 +14192,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14326,7 +14201,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 <center>
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14336,7 +14211,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 <center>
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14346,7 +14221,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 <center>
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14359,7 +14234,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[59]:</div>
@@ -14513,7 +14388,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14527,7 +14402,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </table>
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
@@ -14662,7 +14537,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
@@ -14691,7 +14566,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
@@ -14724,7 +14599,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14732,7 +14607,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[68]:</div>
@@ -15054,7 +14929,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -15064,7 +14939,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 <center>
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[69]:</div>
@@ -15080,7 +14955,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[70]:</div>
@@ -15119,14 +14994,14 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Information-retrieval">Information retrieval<a class="anchor-link" href="#Information-retrieval">&#182;</a></h4>
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[72]:</div>
@@ -15173,14 +15048,14 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Clustering">Clustering<a class="anchor-link" href="#Clustering">&#182;</a></h4>
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[73]:</div>
@@ -15216,7 +15091,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[74]:</div>
@@ -15250,7 +15125,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[75]:</div>
@@ -15289,14 +15164,14 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="K-Means-y-visualizaci&#243;n-con-PCA">K-Means y visualizaci&#243;n con PCA<a class="anchor-link" href="#K-Means-y-visualizaci&#243;n-con-PCA">&#182;</a></h4>
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[77]:</div>
@@ -15356,7 +15231,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[78]:</div>
@@ -15375,7 +15250,7 @@ This leads to the second defining aspect of this cognitive task of NLP, namely P
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[79]:</div>
@@ -15455,14 +15330,14 @@ if (outputEl) {{
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Lo-mismo-pero-ahora-en-la-matriz-de-similaridades-obtenida">Lo mismo pero ahora en la matriz de similaridades obtenida<a class="anchor-link" href="#Lo-mismo-pero-ahora-en-la-matriz-de-similaridades-obtenida">&#182;</a></h4>
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[80]:</div>
@@ -15481,7 +15356,7 @@ if (outputEl) {{
 </div>
 </div>
 
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[81]:</div>
@@ -15561,7 +15436,96 @@ if (outputEl) {{
 </div>
 </div>
 
-</div></section><section>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[198]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">bow</span><span class="p">)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="o">.</span><span class="mi">001</span>
+<span class="n">kpca</span> <span class="o">=</span> <span class="n">KernelPCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">sigma</span><span class="p">)</span>
+<span class="n">bow_kpca</span> <span class="o">=</span> <span class="n">kpca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">proj</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">bow_kpca</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pc1&#39;</span><span class="p">,</span><span class="s1">&#39;pc2&#39;</span><span class="p">,</span><span class="s1">&#39;pc3&#39;</span><span class="p">,</span><span class="s1">&#39;pc4&#39;</span><span class="p">,</span><span class="s1">&#39;pc5&#39;</span><span class="p">])</span>
+
+<span class="n">kpca_bow</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;pc1&#39;</span><span class="p">:</span> <span class="n">proj</span><span class="p">[</span><span class="s1">&#39;pc1&#39;</span><span class="p">],</span> <span class="s1">&#39;pc2&#39;</span><span class="p">:</span> <span class="n">proj</span><span class="p">[</span><span class="s1">&#39;pc2&#39;</span><span class="p">],</span> <span class="s1">&#39;tipo&#39;</span><span class="p">:</span> <span class="n">t_data</span><span class="p">[</span><span class="s1">&#39;categoria&#39;</span><span class="p">],</span>
+                       <span class="s1">&#39;clus&#39;</span><span class="p">:</span><span class="n">cl_pred</span><span class="p">})</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">kpca_bow</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;pc1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;pc2&#39;</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tipo&#39;</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;tipo&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">autosize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+        
+        
+            <div id="ec86aedc-dd7a-4949-b247-8edfdaa97e2b" class="plotly-graph-div" style="height:600px; width:600px;"></div>
+            <script type="text/javascript">
+                require(["plotly"], function(Plotly) {
+                    window.PLOTLYENV=window.PLOTLYENV || {};
+                    
+                if (document.getElementById("ec86aedc-dd7a-4949-b247-8edfdaa97e2b")) {
+                    Plotly.newPlot(
+                        'ec86aedc-dd7a-4949-b247-8edfdaa97e2b',
+                        [{"customdata": [["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"]], "hovertemplate": "tipo=%{customdata[0]}<br>pc1=%{x}<br>pc2=%{y}<extra></extra>", "legendgroup": "coches", "marker": {"color": "#636efa", "symbol": "circle"}, "mode": "markers", "name": "coches", "orientation": "v", "showlegend": true, "type": "scatter", "x": [-0.005006277466376772, -0.005006277466376762, -0.005006277466376762, -0.005006277466376782, -0.005006277466376787, -0.005006277466376743, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376772, -0.005006277466376772, -0.005006277466376782, -0.005006277466376782, -0.005006277466376775, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376772, -0.005006277466376782, -0.005006277466376791, 0.9962492158089772, -0.005006277466376772, -0.005006277466376791, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.0050062774663767766, -0.005006277466376791, -0.005006277466376743, -0.005006277466376782, -0.005006277466376802, -0.005006277466376791, -0.005006277466376762, -0.005006277466376782, 0.9962492158089772, -0.005006277466376782, -0.005006277466376782, -0.005006277466376762, -0.0050062774663767965, -0.0050062774663767965, -0.0050062774663767766, -0.005006277466376772, -0.005006277466376787, -0.005006277466376787, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376772, -0.005006277466376762], "xaxis": "x", "y": [0.0009900490524058301, 0.11545636870698674, -0.0047340283511778, -0.06677121389592294, 0.014381320885207518, 0.03411339045322106, -0.004571768417443039, -0.09235397989979724, 0.025221617474185474, -0.04831371438565377, -0.0015754245183527565, 0.0006196666075213718, 0.13535000388849852, 0.33838356760532873, 0.0057888083105828055, 0.019561511507016162, 0.003271800339780364, -0.02222092361546374, -0.022968588931397846, -0.01743059312649699, 0.014068540482312259, 1.1102230246251573e-16, -0.005553878785459491, -0.015468751831967543, -0.10703884181487143, -0.014545743614402511, -0.004801971302448502, 0.011437109003569371, -0.02810422244161995, -0.05380648016331339, 0.027899631741820207, 0.031245086184891056, 0.007137371532349471, 0.23282293748854538, -0.12557279691372614, 0.0, -0.012888151151851277, 0.011313715121761821, -0.0023929494514366104, -0.014048941211065586, -0.012597842106792255, -0.0087761805682661, -0.005590734752487985, -0.0028204070221887288, 0.0037551209272737402, 0.011054186866918406, -0.006325488746434596, -0.0014477808249305371, 0.00036080723075793846, -0.09885690482388641], "yaxis": "y"}, {"customdata": [["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"]], "hovertemplate": "tipo=%{customdata[0]}<br>pc1=%{x}<br>pc2=%{y}<extra></extra>", "legendgroup": "hoteles", "marker": {"color": "#EF553B", "symbol": "circle"}, "mode": "markers", "name": "hoteles", "orientation": "v", "showlegend": true, "type": "scatter", "x": [-0.005006277466376787, -0.005006277466376782, -0.0050062774663767766, -0.005006277466376782, -0.005006277466376762, -0.005006277466376802, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376821, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376762, -0.005006277466376796, -0.005006277466376772, -0.005006277466376772, -0.005006277466376767, -0.005006277466376782, -0.005006277466376782, -0.005006277466376762, -0.0050062774663767766, -0.005006277466376782, -0.005006277466376772, -0.005006277466376782, -0.005006277466376762, -0.005006277466376791, -0.005006277466376782, -0.005006277466376782, -0.005006277466376772, -0.005006277466376782, -0.005006277466376791, -0.005006277466376743, -0.005006277466376802, -0.005006277466376782, -0.005006277466376791, -0.005006277466376772, -0.005006277466376777, -0.005006277466376782, -0.005006277466376787, -0.005006277466376783, -0.005006277466376743, -0.005006277466376791, -0.005006277466376791, -0.005006277466376782, -0.005006277466376791, -0.005006277466376806], "xaxis": "x", "y": [9.460728831511146e-05, -0.020453897121973215, -0.011219053244881524, 0.03389918268445324, -0.0009534287087784733, 0.010545769919863585, -0.001222309605632064, -0.013797262367714844, -0.0049448391907792565, -0.10096441628648704, -0.10681420988908347, -0.013263637902558268, -0.0036022369431894683, 0.0053584562830573355, 0.0006802889200635616, 0.003420374638813952, 0.062366422295968754, -0.016422243308824132, -0.00023087315983369455, -0.008062716085574342, -0.19152744985930387, -0.014403161841759136, 0.006219915926246479, -0.04708750871731535, 0.00063697895719439, 0.047037343405364244, 0.0018737836948572186, -0.006738994032058997, -0.027244341098751814, -0.037244831461900454, -0.0059209414020297115, -0.016704726545964877, -0.23303940145725427, 0.017122329005751984, 0.034732559082765284, 0.19543220530628733, -0.0033554976747295095, 0.022914338485361424, -0.014638640781031411, -0.004006734277062769, 0.0437616042188546, -0.0019681120229215142, -0.016389113893041086, -0.006878184083355725, 0.008940513867459794, 0.016020710218581986, 0.15041644849408264, -0.02332996787388869, 0.010173231351520776, 0.0006968176310075129], "yaxis": "y"}, {"customdata": [["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"]], "hovertemplate": "tipo=%{customdata[0]}<br>pc1=%{x}<br>pc2=%{y}<extra></extra>", "legendgroup": "lavadoras", "marker": {"color": "#00cc96", "symbol": "circle"}, "mode": "markers", "name": "lavadoras", "orientation": "v", "showlegend": true, "type": "scatter", "x": [-0.005006277466376791, -0.005006277466376772, -0.005006277466376782, -0.005006277466376802, -0.0050062774663767965, -0.0050062774663767766, -0.005006277466376791, -0.005006277466376772, -0.005006277466376787, -0.005006277466376772, -0.005006277466376743, -0.005006277466376787, -0.005006277466376791, -0.005006277466376772, -0.005006277466376762, -0.005006277466376782, -0.005006277466376782, -0.005006277466376772, -0.005006277466376782, -0.005006277466376791, -0.005006277466376782, -0.005006277466376776, -0.0050062774663767766, -0.005006277466376791, -0.005006277466376787, -0.005006277466376782, -0.005006277466376767, -0.005006277466376796, -0.005006277466376782, -0.005006277466376772, -0.005006277466376762, -0.005006277466376791, -0.005006277466376772, -0.005006277466376782, -0.005006277466376782, -0.005006277466376802, -0.005006277466376787, -0.005006277466376782, -0.005006277466376762, -0.005006277466376788, -0.005006277466376772, -0.005006277466376782, -0.005006277466376782, -0.005006277466376791, -0.005006277466376782, -0.005006277466376772, -0.005006277466376791, -0.005006277466376791, -0.005006277466376786, -0.0050062774663767766], "xaxis": "x", "y": [0.0007278119163201262, -0.03817211989697784, 0.5927060241035145, 0.03892565691541595, 0.12621911192233978, -0.020373287401720203, 0.07057659006582197, -0.008232745904240798, -0.023460634114945377, -0.002115873681150711, -0.04111135975523213, -0.041479044842360285, -0.008469686281519123, -0.011187356005381843, 0.007393776664838049, -0.021883981938635416, 0.02164538192918745, -0.020495597013440003, 0.07707240786884254, -0.03622430979431459, 0.010688076310869238, -0.010490503484235143, 0.003196310383142028, 0.017466170395554013, 0.005546446451655914, -0.010512026917229383, 0.03637888983289149, -0.00440321298082542, -0.008792209766729417, -0.0409931692842255, 0.028188539182428442, -0.03530136217651274, -0.007528249159499975, -0.017105793500409267, -0.004861517402405157, -0.025401111275040803, 0.008553115657967137, -0.01907217895976674, -0.006967883589090102, -0.005425152183123939, -0.03942719427792858, -0.005858186623687905, 0.001670380085244069, -0.0029456695549014444, 0.01680824338041927, -0.0022676923352170724, 0.0019208111990259027, 0.0122299457290537, -0.0018178620847403792, 0.001371891420479548], "yaxis": "y"}, {"customdata": [["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"]], "hovertemplate": "tipo=%{customdata[0]}<br>pc1=%{x}<br>pc2=%{y}<extra></extra>", "legendgroup": "libros", "marker": {"color": "#ab63fa", "symbol": "circle"}, "mode": "markers", "name": "libros", "orientation": "v", "showlegend": true, "type": "scatter", "x": [-0.005006277466376782, -0.005006277466376802, -0.005006277466376802, -0.005006277466376762, -0.005006277466376782, -0.005006277466376781, -0.005006277466376762, -0.005006277466376772, -0.005006277466376782, -0.005006277466376782, -0.005006277466376762, -0.005006277466376782, -0.005006277466376791, -0.005006277466376782, -0.005006277466376802, -0.005006277466376772, -0.0050062774663767766, -0.005006277466376782, -0.005006277466376811, -0.005006277466376772, -0.005006277466376791, -0.005006277466376782, -0.005006277466376782, -0.005006277466376787, -0.0050062774663767705, -0.005006277466376788, -0.005006277466376784, -0.005006277466376779, -0.005006277466376772, -0.005006277466376782, -0.005006277466376802, -0.005006277466376743, -0.005006277466376772, -0.005006277466376782, -0.005006277466376782, -0.005006277466376772, -0.005006277466376762, -0.005006277466376791, -0.005006277466376772, -0.005006277466376782, -0.005006277466376762, -0.005006277466376772, -0.005006277466376772, -0.005006277466376787, -0.005006277466376782, -0.005006277466376791, -0.005006277466376794, -0.005006277466376787, -0.005006277466376782, -0.005006277466376791], "xaxis": "x", "y": [0.0023404416541333174, 0.05849213775223347, 0.022690630710943585, 0.009586235828143566, 0.05458703167460422, -0.006134748682654322, 0.0012565161183873555, -0.01053545229097344, 0.002940919132918595, -0.04480731620857434, 0.007070134287372275, -0.005429903765385085, -0.0027277491307237823, -0.02566294678534473, 0.010431466117383298, -2.211656734538854e-05, -0.011678862276454496, 0.0244090503736724, -0.012330332698620357, -0.008825675772224739, -0.00043844833440379066, 0.0034218440118506826, -0.007288320019086239, -0.010257802179914927, -0.00041702957277951785, 0.007168678245572558, -0.022301373701176408, -0.007407689084970586, 0.0013788693314323178, -0.0588686498846766, 0.037255200166713485, -0.03954353234860605, -0.00276643457904255, -0.021786875693722556, 0.01606980987974518, 0.013285798958214643, -0.0040703301310357235, -0.005113468587465562, -0.07616177409580929, -0.01709996051146256, -0.0038043526282440744, -0.005248357664558358, -0.044302670279696275, 0.0008435376814401463, -7.62167470651221e-05, 0.008063090268425837, 0.0015206309161087336, -0.005401149538837368, -0.030166748655423688, 0.001638580968101434], "yaxis": "y"}, {"customdata": [["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"]], "hovertemplate": "tipo=%{customdata[0]}<br>pc1=%{x}<br>pc2=%{y}<extra></extra>", "legendgroup": "moviles", "marker": {"color": "#FFA15A", "symbol": "circle"}, "mode": "markers", "name": "moviles", "orientation": "v", "showlegend": true, "type": "scatter", "x": [-0.005006277466376782, -0.0050062774663767965, -0.005006277466376782, -0.005006277466376791, -0.005006277466376791, -0.0050062774663767766, -0.0050062774663767766, -0.0050062774663767766, -0.005006277466376791, -0.005006277466376787, -0.005006277466376782, -0.005006277466376782, -0.005006277466376787, -0.005006277466376787, -0.0050062774663767766, -0.005006277466376782, -0.005006277466376791, -0.005006277466376782, -0.005006277466376782, -0.005006277466376787, -0.005006277466376791, -0.005006277466376791, -0.005006277466376762, -0.005006277466376791, -0.005006277466376787, -0.005006277466376782, -0.005006277466376762, -0.005006277466376787, -0.005006277466376782, -0.0050062774663767766, -0.005006277466376743, -0.005006277466376791, -0.005006277466376782, -0.005006277466376783, -0.005006277466376762, -0.005006277466376787, -0.005006277466376802, -0.005006277466376778, -0.005006277466376762, -0.005006277466376791, -0.005006277466376782, -0.005006277466376791, -0.0050062774663767766, -0.005006277466376762, -0.005006277466376782, -0.005006277466376772, -0.005006277466376758, -0.005006277466376772, -0.005006277466376782, -0.005006277466376782], "xaxis": "x", "y": [0.05322880878683998, -0.009858324241334815, -0.0034649400836017107, 0.0021628669487828377, -0.004564558250985961, -0.03493021498237256, -0.0007185955940724954, -0.007950816509493792, -0.07383728473272688, -0.01527172660844935, -0.012670421055856163, 0.00524234937729685, -0.0056930822896766285, 0.008224160047848822, 0.006524763608957322, -0.013445950329458571, -0.01857234704684938, -0.004713295204782229, -0.0014457094574812238, 0.001094885225605282, 0.003749271101702779, -0.009899351905326842, -0.00950401667810212, -0.00533358263147422, -0.003468642625950149, 0.011525837279437578, -0.003447212997162554, 0.004643021200427578, -0.0060279612319241145, -0.0014167181785613376, 0.02668144339360738, 0.007397401668837627, -0.003188858824600698, -0.008226740574623628, 0.06206391878247444, -0.01647107446768666, 0.009808096720628733, -0.006104932312182708, 0.0033701780176834555, -0.038696257043820376, -0.006554201779580414, 0.005511742603962724, -0.015832615915733806, 0.006494834390921818, 0.04657197679624932, 0.00438145961268024, -0.0011429560982397302, -0.0028255218284524933, 0.004547328486930099, -0.0010877112879352716], "yaxis": "y"}, {"customdata": [["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"]], "hovertemplate": "tipo=%{customdata[0]}<br>pc1=%{x}<br>pc2=%{y}<extra></extra>", "legendgroup": "musica", "marker": {"color": "#19d3f3", "symbol": "circle"}, "mode": "markers", "name": "musica", "orientation": "v", "showlegend": true, "type": "scatter", "x": [-0.005006277466376762, -0.005006277466376782, -0.005006277466376782, -0.005006277466376802, -0.0050062774663767766, -0.005006277466376782, -0.005006277466376767, -0.005006277466376782, -0.005006277466376791, -0.005006277466376821, -0.005006277466376782, -0.005006277466376783, -0.005006277466376787, -0.005006277466376782, -0.005006277466376791, -0.005006277466376762, -0.005006277466376782, -0.005006277466376772, -0.005006277466376791, -0.005006277466376762, -0.005006277466376772, -0.005006277466376791, -0.0050062774663767766, -0.005006277466376762, -0.005006277466376791, -0.005006277466376782, -0.005006277466376802, -0.005006277466376791, -0.005006277466376772, -0.005006277466376802, -0.005006277466376772, -0.005006277466376782, -0.005006277466376782, -0.005006277466376791, -0.005006277466376791, -0.005006277466376772, -0.005006277466376782, -0.005006277466376788, -0.005006277466376767, -0.005006277466376772, -0.005006277466376782, -0.005006277466376787, -0.005006277466376791, -0.005006277466376791, -0.005006277466376772, -0.005006277466376791, -0.005006277466376782, -0.005006277466376762, -0.0050062774663767766, -0.005006277466376791], "xaxis": "x", "y": [-0.0035733539251383653, -0.0009482642180821197, 0.004882453867405431, 0.28768557275536205, 0.009464609505601136, 0.00032107210007174835, -0.052168095021768175, -0.0012749596839367059, -0.008905046993319397, 0.017050850127157336, -0.0038199235151949824, -0.0016355502305410174, 0.008112731208506868, 0.004285747528387378, -0.0028069566391449533, -0.010987699848966179, -0.0025249421336880785, 0.008863356544651748, 0.002045222920434847, -0.007534177576975684, -0.00603871675350241, 0.002816236577220162, -0.005585269316241068, -0.005610611462209408, -0.005246870441057688, 0.0011360791978606434, -0.008677943766902575, -0.0028254450834542897, -0.01811586345323633, -0.0027278921057403097, -0.00982861330262818, -0.003949972505118432, 0.004316453880640103, -0.002876744010035218, -0.011819399735290512, -0.003969368017563711, -0.008382619378498232, -0.004030582770696889, -0.0020983323128610245, -0.006282207482068381, 0.006138826231082692, 0.003925940322001306, 0.004191088728032112, 0.0037970306650990547, -0.016290177417743832, -0.004731207939805703, -0.04191892818220131, 0.004792667130711286, -0.005068256481182035, 0.0014459898861737966], "yaxis": "y"}, {"customdata": [["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"]], "hovertemplate": "tipo=%{customdata[0]}<br>pc1=%{x}<br>pc2=%{y}<extra></extra>", "legendgroup": "ordenadores", "marker": {"color": "#FF6692", "symbol": "circle"}, "mode": "markers", "name": "ordenadores", "orientation": "v", "showlegend": true, "type": "scatter", "x": [-0.005006277466376802, -0.005006277466376782, -0.005006277466376762, -0.005006277466376802, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376787, -0.005006277466376767, -0.005006277466376787, -0.005006277466376762, -0.005006277466376772, -0.005006277466376762, -0.005006277466376787, -0.005006277466376767, -0.005006277466376782, -0.005006277466376791, -0.005006277466376782, -0.0050062774663767766, -0.005006277466376782, -0.005006277466376782, -0.005006277466376762, -0.005006277466376787, -0.005006277466376791, -0.005006277466376782, -0.005006277466376794, -0.005006277466376762, -0.005006277466376782, -0.0050062774663767766, -0.0050062774663767766, -0.005006277466376767, -0.005006277466376782, -0.005006277466376762, -0.005006277466376782, -0.005006277466376782, -0.005006277466376791, -0.005006277466376787, -0.005006277466376772, -0.005006277466376762, -0.005006277466376791, -0.005006277466376767, -0.005006277466376772, -0.005006277466376782, -0.005006277466376791, -0.005006277466376772, -0.005006277466376762, -0.005006277466376772, -0.005006277466376791, -0.005006277466376782, -0.005006277466376772], "xaxis": "x", "y": [-0.0067606101966382936, -0.0014108988697292416, 0.00776091014682855, -0.0023752119845045928, -0.023777480784587763, -2.9367873611470272e-05, -0.0012940327942716013, -0.008153182249119323, -0.022754604286618484, 0.0027645009494206164, -0.004804114153346469, -0.012535576739387705, 0.0005742047547827455, 0.0012061584957387553, -0.004249200390330758, -0.008645375074353081, -0.019214082810424804, -0.0029395562769439867, 0.0052168968640578205, 0.00041990354936608686, -0.019002176670777852, -0.013779673646639313, 0.00445271893267186, 0.0034640882478972367, -0.010579202941195888, 0.0004176108416875729, -0.003367534123778488, 0.016568937812585092, -0.01913264986257654, -0.00045503715440074787, -0.002455212549479455, -0.009986928383692327, -0.0073684770195800355, -0.001000971169840125, -0.005015366914421216, -0.008291430729870297, -0.0007770024159547006, -0.0004517668967835151, 0.0032341392580283964, 0.0004889670113709183, -0.0036378305742009688, -0.0021901110258524203, 0.027992242041017336, -0.009567713841160522, 0.003444247873170709, -0.0007452644094810493, -0.0008635699602704277, -0.002717643899893556, -0.000921838230011935, 0.0017487900451920526], "yaxis": "y"}, {"customdata": [["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"]], "hovertemplate": "tipo=%{customdata[0]}<br>pc1=%{x}<br>pc2=%{y}<extra></extra>", "legendgroup": "peliculas", "marker": {"color": "#B6E880", "symbol": "circle"}, "mode": "markers", "name": "peliculas", "orientation": "v", "showlegend": true, "type": "scatter", "x": [-0.005006277466376762, -0.005006277466376782, -0.005006277466376762, -0.005006277466376782, -0.005006277466376772, -0.005006277466376767, -0.005006277466376772, -0.005006277466376772, -0.0050062774663767766, -0.005006277466376762, -0.005006277466376762, -0.0050062774663767766, -0.005006277466376762, -0.005006277466376762, -0.0050062774663767766, -0.005006277466376762, -0.005006277466376767, -0.005006277466376762, -0.005006277466376782, -0.005006277466376767, -0.005006277466376762, -0.005006277466376762, -0.005006277466376767, -0.005006277466376782, -0.005006277466376782, -0.0050062774663767575, -0.005006277466376772, -0.005006277466376772, -0.0050062774663767766, -0.005006277466376762, -0.005006277466376762, -0.005006277466376771, -0.005006277466376762, -0.005006277466376782, -0.0050062774663767766, -0.005006277466376772, -0.0050062774663767766, -0.0050062774663767766, -0.005006277466376762, -0.005006277466376762, -0.005006277466376782, -0.005006277466376767, -0.005006277466376762, -0.005006277466376767, -0.005006277466376762, -0.005006277466376762, -0.005006277466376762, -0.005006277466376767, -0.005006277466376782, -0.005006277466376772], "xaxis": "x", "y": [0.004189574291904081, -0.004469248066205872, -0.0034885779310578646, 0.005045064821842856, -0.004966751223350736, -0.005280832115565518, 0.0019835021985988312, -0.0020579736013176127, 8.237990171851289e-05, -0.012961399583138107, 0.02981547028423331, 0.002536674126750552, -0.002575611928862744, -0.005051932460341534, -0.02387687126431157, -0.005114187283342248, -0.005069634833117353, -0.010806796317192384, -0.009049985267563522, -0.0036927602177254893, -0.012846337442491385, -0.005284240647243168, -0.005509503342138972, -0.0001296631068421484, -0.001497791123577134, -0.0021995793279383654, -0.006433439766727109, 0.005645670658312538, -0.0002834336047894891, -0.0015070835246979522, -0.003932256624650676, -0.0019528932552147506, -0.013011717200469746, -0.00296595435535855, -0.003496411739344981, -0.003144864932453031, -0.006355245979332809, 0.0007975454217219324, -0.004289297475887954, -0.00677861914156772, -0.004913632443000169, -0.010922475213163675, -0.0027930161363387013, -0.0017316477104870412, -0.0009852655594684713, -0.010186629146995772, -0.00244421950189057, -0.00486274674479557, -0.006758567582501718, -0.006049450127607212], "yaxis": "y"}],
+                        {"autosize": false, "height": 600, "legend": {"title": {"text": "tipo"}, "tracegroupgap": 0}, "margin": {"t": 60}, "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "pie": [{"automargin": true, "type": "pie"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}}}, "width": 600, "xaxis": {"anchor": "y", "domain": [0.0, 1.0], "title": {"text": "pc1"}}, "yaxis": {"anchor": "x", "domain": [0.0, 1.0], "title": {"text": "pc2"}}},
+                        {"responsive": true}
+                    ).then(function(){
+                            
+var gd = document.getElementById('ec86aedc-dd7a-4949-b247-8edfdaa97e2b');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })
+                };
+                });
+            </script>
+        </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[86]:</div>
@@ -15613,7 +15577,7 @@ Categories (5, int64): [0, 1, 2, 3, 4]</pre>
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[87]:</div>
@@ -15696,14 +15660,14 @@ if (outputEl) {{
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Clasificaci&#243;n">Clasificaci&#243;n<a class="anchor-link" href="#Clasificaci&#243;n">&#182;</a></h4>
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[88]:</div>
@@ -15747,7 +15711,7 @@ if (outputEl) {{
 </div>
 </div>
 
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -15755,7 +15719,7 @@ if (outputEl) {{
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -15767,7 +15731,7 @@ $$<p>donde $VP$ es el número de predicciones positivas correctamente clasificad
 
 </div>
 </div>
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -15779,7 +15743,7 @@ $$<p>donde $VP$ es el número de predicciones positivas correctamente clasificad
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -15791,7 +15755,7 @@ $$<p>donde $VP$ es el número de predicciones positivas correctamente clasificad
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -15803,7 +15767,7 @@ $$<p>donde $VP$ es el número de predicciones positivas correctamente clasificad
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[34]:</div>
@@ -15843,7 +15807,7 @@ weighted avg       0.67      0.66      0.66        80
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[29]:</div>
@@ -15881,7 +15845,7 @@ weighted avg       0.67      0.66      0.66        80
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[30]:</div>
@@ -15919,7 +15883,7 @@ weighted avg       0.67      0.66      0.66        80
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -15937,7 +15901,7 @@ weighted avg       0.67      0.66      0.66        80
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[89]:</div>
@@ -16261,14 +16225,14 @@ weighted avg       0.67      0.66      0.66        80
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Clasificaci&#243;n-son-TF-IDF">Clasificaci&#243;n son TF-IDF<a class="anchor-link" href="#Clasificaci&#243;n-son-TF-IDF">&#182;</a></h4>
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[90]:</div>
@@ -16309,7 +16273,7 @@ weighted avg       0.67      0.66      0.66        80
 </div>
 </div>
 
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[91]:</div>
@@ -16348,7 +16312,7 @@ weighted avg       0.74      0.74      0.74        80
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[92]:</div>
@@ -16386,7 +16350,7 @@ weighted avg       0.74      0.74      0.74        80
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16399,7 +16363,7 @@ weighted avg       0.74      0.74      0.74        80
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16413,7 +16377,7 @@ weighted avg       0.74      0.74      0.74        80
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16428,7 +16392,7 @@ weighted avg       0.74      0.74      0.74        80
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[18]:</div>
@@ -16474,7 +16438,7 @@ to increase itself . By making the President the sole distributer of all the pa
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16484,7 +16448,7 @@ to increase itself . By making the President the sole distributer of all the pa
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16493,7 +16457,7 @@ to increase itself . By making the President the sole distributer of all the pa
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16503,7 +16467,7 @@ to increase itself . By making the President the sole distributer of all the pa
 <center>
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16515,7 +16479,7 @@ to increase itself . By making the President the sole distributer of all the pa
 
 </div>
 </div>
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16527,7 +16491,7 @@ to increase itself . By making the President the sole distributer of all the pa
 
 </div>
 </div>
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16538,7 +16502,7 @@ P(w_1^n)=\displaystyle \prod_{t=1}^n P(w_t|w_1^{t-1}).
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16550,7 +16514,7 @@ P(w_t|w_1^{t-1}) \approx P\left(w_t|w_{t-N+1}^{t-1}\right)
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16562,7 +16526,7 @@ P(w_t|w_1^{t-1}) \approx P\left(w_t|w_{t-N+1}^{t-1}\right)
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16574,7 +16538,7 @@ P(w_t|w_1^{t-1}) \approx P\left(w_t|w_{t-N+1}^{t-1}\right)
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16587,7 +16551,7 @@ P(w_t|w_1^{t-1}) \approx P\left(w_t|w_{t-N+1}^{t-1}\right)
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16600,7 +16564,7 @@ P(w_t|w_1^{t-1}) \approx P\left(w_t|w_{t-N+1}^{t-1}\right)
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16613,7 +16577,7 @@ P(w_t|w_1^{t-1}) \approx P\left(w_t|w_{t-N+1}^{t-1}\right)
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16629,7 +16593,7 @@ P(w_t|w_1^{t-1}) \approx P\left(w_t|w_{t-N+1}^{t-1}\right)
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16657,7 +16621,7 @@ P(w_t|w_1^{t-1}) \approx P\left(w_t|w_{t-N+1}^{t-1}\right)
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16672,7 +16636,7 @@ después de observar la palabra $t$ del corpus de entrenamiento.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16686,7 +16650,7 @@ después de observar la palabra $t$ del corpus de entrenamiento.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16699,7 +16663,7 @@ después de observar la palabra $t$ del corpus de entrenamiento.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16708,7 +16672,7 @@ después de observar la palabra $t$ del corpus de entrenamiento.</p>
 <center>
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16722,7 +16686,7 @@ después de observar la palabra $t$ del corpus de entrenamiento.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16734,7 +16698,7 @@ después de observar la palabra $t$ del corpus de entrenamiento.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16747,7 +16711,7 @@ después de observar la palabra $t$ del corpus de entrenamiento.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16760,7 +16724,7 @@ después de observar la palabra $t$ del corpus de entrenamiento.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16773,7 +16737,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16782,7 +16746,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16796,7 +16760,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16810,7 +16774,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16824,7 +16788,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16834,7 +16798,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16852,14 +16816,14 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Algunas-arquitecturas-de-redes-profundas-para-an&#225;lisis-de-textos">Algunas arquitecturas de redes profundas para an&#225;lisis de textos<a class="anchor-link" href="#Algunas-arquitecturas-de-redes-profundas-para-an&#225;lisis-de-textos">&#182;</a></h2>
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16869,7 +16833,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16878,7 +16842,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16887,7 +16851,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16896,7 +16860,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16905,7 +16869,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16914,7 +16878,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16923,7 +16887,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16941,7 +16905,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16951,7 +16915,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16961,7 +16925,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16970,7 +16934,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16979,7 +16943,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16989,7 +16953,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -17004,7 +16968,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -17012,7 +16976,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -17054,7 +17018,7 @@ Xin Rong, 2016.</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -17073,7 +17037,7 @@ L(\boldsymbol{\theta})=-E_{\mathbf{x}}\log P_{\text{model}}(\mathbf{y}|\mathbf{x
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -17082,74 +17046,12 @@ L(\boldsymbol{\theta})=-E_{\mathbf{x}}\log P_{\text{model}}(\mathbf{y}|\mathbf{x
 
 </div>
 </div>
-</div></section></section>
 </div>
-</div>
-
-<script>
-
-require(
-    {
-      // it makes sense to wait a little bit when you are loading
-      // reveal from a cdn in a slow connection environment
-      waitSeconds: 15
-    },
-    [
-      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/head.min.js",
-      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/js/reveal.js"
-    ],
-
-    function(head, Reveal){
-
-        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-
-            transition: "slide",
-
-            // Optional libraries used to extend on reveal.js
-            dependencies: [
-                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/classList.js",
-                  condition: function() { return !document.body.classList; } },
-                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/notes/notes.js",
-                  async: true,
-                  condition: function() { return !!document.body.classList; } }
-            ]
-        });
-
-        var update = function(event){
-          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-          }
-        };
-
-        Reveal.addEventListener('slidechanged', update);
-
-        function setScrollingSlide() {
-            var scroll = false
-            if (scroll === true) {
-              var h = $('.reveal').height() * 0.95;
-              $('section.present').find('section')
-                .filter(function() {
-                  return $(this).height() > h;
-                })
-                .css('height', 'calc(95vh)')
-                .css('overflow-y', 'scroll')
-                .css('margin-top', '20px');
-            }
-        }
-
-        // check and set the scrolling slide every time the slide change
-        Reveal.addEventListener('slidechanged', setScrollingSlide);
-
-    }
-
-);
-</script>
-
+    </div>
+  </div>
 </body>
+
+ 
 
 
 </html>
