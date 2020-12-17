@@ -1916,9 +1916,9 @@ El más usado es Term Frequency - Inverse Document Frequency (TF-IDF).
 \end{itemize}
 
 Entonces
-$$
+\begin{align*}
 \text{TF-IDF}: tf_{t,d} \times idf_t
-$$
+\end{align*}
 
 Existen varias implementaciones (Keras, SKlearn, NLTK) que consideran diferentes esquemas de pesado de la matriz BOW, incluyendo TF-IDF.
 
@@ -2277,7 +2277,408 @@ plt.show()
 ![png](output_91_0.png)
 
 
+Si bien los modelos basados en representaciones tipo BOW son muy útiles para ciertas tareas y ciertos corpus de textos, para otros no es la mejor opción. 
+
+Básicamente, los problemas de BOW y sus extensiones son
+- Altamente dimensional
+- Sparse
+
+## Word embeddings y semántica distribucional
+
+El esquema que hemos usado para análisis de textos:
+
+<center>
+<img src="figs/textos3.png" height="20%" width="25%"/>
+<center>
+
+
+Las representaciones vectoriales que veremos en ésta parte del curso, se construyen para que nos den más información relacionada con las palabras __y su uso__ en el lenguaje.
+
+- Semántica: el estudio del significado de los signos lingüisticos. Examina las relaciones entre las palabras y lo que representan.
+
+- El significado de una palabra está dado por las palabras que aparecen cercanas frecuentemente: "*You shall know a word by the company it keeps*" (J. R. Firth 1957: 11)
+
+- La semántica vectorial nos ofrece una manera cuantitativa para representar diversas cualidades útiles de las palabras (significado, similaridad, asociaciones, etcétera):
+
+
 
 ```python
+from nltk.book import text1, text4
+print('Corpus: ',text4.name,'\n')
 
+text4.concordance('president',lines=10) #president, city
 ```
+
+    Corpus:  Inaugural Address Corpus 
+    
+    Displaying 10 of 89 matches:
+    artment it is made the duty of the President " to recommend to your considerati
+    ecution of any official act of the President the Constitution requires an oath 
+    o taking upon myself the duties of President of the United States for another t
+    he unequaled services of the first President , it was a common sentiment that t
+    orrection is in the power of every President , and consequently in mine , it wo
+    s would be found to constitute the President a part of the legislative power . 
+    ent have been entertained that the President , placed at the capital , in the c
+    r conferring the veto power on the President . This argument acquires additiona
+     the nation ," as affording to the President sufficient authority for his consi
+    to increase itself . By making the President the sole distributer of all the pa
+
+
+__Word embeddings__:
+
+Representaciones vectoriales densas de una longitud predefinida, donde podemos inferir propiedades semánticas de las palabras, tales como su significado, mediante la semántica distribucional.
+
+Para obtenerlos, usamos un __modelo de lenguaje__.
+
+### Modelos de lenguaje
+
+Los modelos que asignan __probabilidades__ a __secuencias de palabras__ se les llaman modelos de lenguaje.
+
+Introducir probabilidades nos permite inferir características semánticas de las palabras, tales como el **significado**, al observar la distribución de las palabras alrededor de alguna de interés.
+
+Modelos de lenguaje "everywhere"...
+
+<center>
+<img src="figs/chat.png" height="30%" width="30%"/>
+<center>
+
+
+Sea $w_1,w_2,\ldots,w_T$ una secuencia de palabras, donde  $w \in V$ (Vocabulario).
+
+Un modelo de lenguaje obtiene probabilidades de palabras
+
+\begin{align*}
+    P(w_t)= P(w_t|w_1^{t-1})   
+\end{align*}
+
+en la secuencia.
+
+
+Por ejemplo, si $V=\lbrace ..., perro, gato, suegro, refrigerador, ...\rbrace$
+
+P(perro|cuando llego a casa, tengo que dar de comer al)
+
+P(gato | cuando llego a casa, tengo que dar de comer al)
+
+P(suegro|cuando llego a casa, tengo que dar de comer al)
+
+P(estufa|cuando llego a casa, tengo que dar de comer al)      
+
+
+También, podemos calcular la probabilidad de obtener una secuencia de $n$ palabras: 
+
+\begin{align*}
+P(w_1^n)=\displaystyle \prod_{t=1}^n P(w_t|w_1^{t-1}).
+\end{align*}
+
+Esto se vuelve muy complicado a medida que la longitud de la secuencia aumenta.
+
+
+Una simplificación es el modelo $n-$gram:
+
+\begin{align*}
+P(w_t|w_1^{t-1}) \approx P\left(w_t|w_{t-N+1}^{t-1}\right) 
+\end{align*}
+
+donde definimos un contexto basado solo en las $N$ palabras previas.
+
+Diferentes modelos de lenguaje se basan en enfoques particulares para calcular ésas probabilidades.
+
+Por ejemplo, usando Máxima Verosimilitud, los estimadores para las probabilidades son conteos. Por ejemplo, para el modelo bigrama (Markov):
+
+\begin{equation*}
+    P\left(w_t|w_{t-1}\right) = \displaystyle \frac{\#(w_{t-1},w_t)}{\sum_w \#(w_{t-1},w)}
+\end{equation*}
+
+Las estimaciones, por supuesto, depende del tamaño del Corpus. Anteriormente (hasta inicios de los 2000s), los métodos más usados a partir de éste esquema eran modelos de Markov, tales como Hidden Markov Models o Máximum Entropy Markov Models. 
+
+Aunque fueron usados extensívamente (y aún se usan), tiene varias problemáticas, sobre todo computacionales.
+
+### Modelo neuronal de lenguaje (NNLM)
+
+<center>
+<img src="figs/bengio03.png" height="60%" width="60%"/>
+<center>
+
+En este paper seminal, Bengio et al. introducen el uso de Redes Neuronales Feed Forward para secuencias de textos.
+
+¿Cómo funciona?  Versión simplificada...
+
+<center>
+<img src="figs/emb4.png" height="60%" width="60%"/>
+<center>
+
+(Jurafsky & Martin, 2019)
+
+Si queremos construir los embeddings, llegamos al modelo de Bengio:
+
+<center>
+<img src="figs/emb5.png" height="60%" width="60%"/>
+<center>
+
+(Jurafsky & Martin, 2019)
+
+La propuesta de Bengio et al.
+
+- Asociar un vector en $\mathbb{R}^d$ a cada palabra del vocabulario
+- Expresar la probabilidad conjunta de secuencias de palabras en términos de los vectores de las palabras en la secuencia.
+- Aprender al mismo tiempo, la representación vectorial de las palabras y los parámetros de las probabilidades (máxima verosimilitud) 
+
+
+Dado un vocabulario $V$, la probabilidad conjunta se modela (y se aprende) mediante $P(w_t|w_1^{t-1})=f(w_t,\ldots,w_{t-n+1})$. Consta de dos partes:
+1. Un mapeo $E(i)$ para cualquier elemento $i$ de $V$ a un vector $E(i)=\mathbf{e} \in \mathbb{R}^d$. Este mapeo es representado por la matriz $\mathbf{E}_{d \times |V|}$ (en el paper de Bengio se representa por $C_{d \times |V|}$).
+2. Una función de probabilidad obtenida mediante una función $g(\cdot)$:
+    \begin{align*}
+      f(i, w_{t-1},\ldots,w_{t-n+1})=g(i,E(w_{t-1}),\ldots,E(w_{t-n+1})).
+    \end{align*}
+    Observa que $\mathbf{E}$ se __comparte__ en todas las palabras del contexto.
+
+Paso Forward:
+
+1. Capa de proyección: dados los índices de las $n$ palabras del contexto, construye los vectores one-hot $\mathbf{x}_i$ correspondientes y su proyección (mapeo o embedding) $\mathbf{e}_i = \mathbf{E}\mathbf{x}_i$. La capa de proyección es la concatenación de los embeddings de las palabras del contexto:
+    \begin{align*}
+      \mathbf{e} = (\mathbf{e}_1,\mathbf{e}_2,\ldots,\mathbf{e}_n)'
+    \end{align*}
+2. Capa oculta:
+    \begin{align*}
+      \mathbf{h}=\tanh (\mathbf{W}\mathbf{e}+\mathbf{b})
+    \end{align*}
+3. Capa de salida:
+
+    \begin{align*}
+      \begin{array}{rcl}
+        \mathbf{z} & = & \mathbf{U}\mathbf{h} \\        
+        \mathbf{y} & = & \text{softmax}(\mathbf{z})        
+      \end{array}
+    \end{align*}
+  
+
+
+Paso Backward (backpropagation):
+
+Se realiza iterativamente usando gradiente estocástico:
+  \begin{align*}
+    \boldsymbol{\theta}=\boldsymbol{\theta}+\gamma\displaystyle
+    \frac{\partial \log P(w_t|w_{t-1},\ldots,w_{t-n+1})}{\partial \boldsymbol{\theta}}
+  \end{align*}
+después de observar la palabra $t$ del corpus de entrenamiento.
+
+Los detalles los omitimos. Si tienes curiosidad, me preguntas... 
+
+En el ajuste, $\boldsymbol{\theta}$ representa todos los parámetros:
+
+Sean $d$ la dimensión del embedding de las palabras, $h$ el número de unidades ocultas y $n$ la ventana de contexto. Los parámetros de la NNLM son entonces
+
+\begin{align*}
+    \boldsymbol{\theta}=(\mathbf{c},\mathbf{b},\mathbf{V},\mathbf{U},\mathbf{W},\mathbf{E}),  
+\end{align*}
+donde
+  
+$\mathbf{E}\in \mathbb{R}^{d\times |V|}$, $\mathbf{W}\in \mathbb{R}^{h\times n\cdot d}$, $\mathbf{U}\in \mathbb{R}^{|V|\times h}$, $\mathbf{V}\in \mathbb{R}^{|V|\times n\cdot d}$, $\mathbf{b}\in \mathbb{R}^{h}$, $\mathbf{c}\in \mathbb{R}^{|V|}$
+  
+Nota: $\mathbf{V}$ y $\mathbf{c}$ son opcionales, ya que son parámetros de conexiones de los embeddings a la capa de salida (detalles en el paper de Bengio).
+
+Word embeddings derivados del NNLM de Bengio:
+
+- word2vec
+- GloVe
+- fastText
+
+### word2vec (T. Mikolov et al., 2013)
+
+
+<center>
+<img src="figs/w2v-mikolov1.png" height="45%" width="45%"/>
+<center>
+
+- Una de las representaciones vectoriales mas usadas
+- Nos proporciona representaciones densas (entradas diferentes de cero) y con vectores cortos ($\mathbb{R}^{100}$ a $\mathbb{R}^{300}$, generalmente).
+- Usa los pesos de una red neuronal como los embeddings. Este clasificador representa una medida cuantitativa de la Probabilidad de que una palabra $w_c$ aparezca __cerca__ de una palabra objetivo $w_t$.
+- Aporta principalmente, ventajas computacionales
+- Presenta dos algoritmos: CBOW (Continuous Bag-of-Words Model) y Skip-Gram
+
+
+<center>
+<img src="figs/mikolov_cbow_skipgram.png" height="45%" width="45%"/>
+<center>
+
+Mikolov et. al., 2013
+
+CBOW
+
+<center>
+<img src="figs/w2v-1.png" height="30%" width="30%"/>
+<center>
+
+Xin Rong, 2016.
+
+CBOW: 
+
+- One-hot encoding en la capa de entrada
+- Usa activación lineal en la capa oculta
+- Dos embeddings (pesos): el de la palabra objetivo y el del contexto (input-hidden y hidden-output).
+
+Skip-Gram
+
+<img src="figs/w2v-2.png" height="30%" width="30%"/>
+Xin Rong, 2016.
+
+- En la capa de salida, se calculan $n$ distribuciones multinomiales con softmax, donde $n$ es el número de palabras del contexto
+
+T. Mikolov et al., 2013 (b). Extensiones del modelo
+
+<img src="figs/w2v-mikolov2.png" height="40%" width="40%"/>
+
+
+- Mejora sustancial en el proceso de ajuste, computacionalmente hablando.
+- Se enfoca en el modelo Skip-Gram
+- Simplifica el modelo multinomial por un problema de clasificación binario. Equivalente a regresión logística.
+- Introduce un proceso de Negative-Sampling para generar palabras objetivo y del contexto.
+- El método resultante es llamado Skip-Gram with Negative Sampling (SGNS)
+
+Los pasos del algoritmo SGNS son:
+
+- Considera la palabra objetivo y las palabras vecinas $w_c$ como objetos con clase positiva
+- Escoge aleatoriamente otras palabras en el vocabulario para obtener objetos con clase negativa
+- Entrenar un clasificador binario con una red neuronal (eq. regresión logística) en las clases definidas antes
+- Usa los pesos de la regresión como los embeddings.
+
+Los parámetros del modelo, es decir, los embeddings.
+
+<img src="figs/vect_sem7.png" height="50%" width="50%"/>
+
+- El embedding de las palabras objetivo $w_t$: $\mathbf{W}$
+- El embedding de las palabras del contexto $w_c$: $\mathbf{C}$
+- Generalmente, se toma $\mathbf{W}$ como los embeddings, también pueden sumarse...
+
+__Ejemplos__
+
+Demo interactivo: [Xin Rong demo](https://ronxin.github.io/wevi/}{\beamergotobutton{Demo}), y su artículo correspondiente: [word2vec Parameter Learning Explained](https://arxiv.org/abs/1411.2738).
+
+
+Cristian Cardellino: Spanish Billion Words Corpus and Embeddings (March 2016), ejemplo en el notebook. 
+
+### Otros embeddings relacionados
+
+- fastText: Enriching Word Vectors with Subword Information. Bojanowski et al. 2017.
+
+    Skip-Gram (word2vec) a nivel de subpalabras: `<where>,  -->   <wh, whe, her, ere, re> `
+
+
+
+- GloVe: Global Vectors for Word Representation. Pennington et al., 2014.
+
+      Global matrix factorization + Local context window.
+
+
+
+## Algunas arquitecturas de redes profundas para análisis de textos
+
+Una red neuronal profunda.
+
+<img src="figs/deep1.png" height="40%" width="40%"/>
+
+¿Cuál es el objetivo de hacer "*profunda*" una red? Veamos...
+
+El esquema de Machine Learning
+
+<img src="figs/ML2.png" height="50%" width="50%"/>
+
+El esquema de Machine Learning
+
+<img src="figs/ml_esquema1.png" height="50%" width="50%"/>
+
+El esquema de Machine Learning
+
+<img src="figs/ml_esquema2.png" height="60%" width="60%"/>
+
+El esquema Deep Learning
+
+<img src="figs/dl_esquema1.png" height="60%" width="60%"/>
+
+El esquema Deep Learning
+
+<img src="figs/dl_esquema2.png" height="60%" width="60%"/>
+
+El esquema Deep Learning: deep encoder-decoder
+
+<img src="figs/encoder-decoder.png" height="50%" width="50%"/>
+
+Aprender representaciones de los datos de manera útil:
+
+<img src="figs/deep2.png" height="40%" width="40%"/>
+
+### Representation learning
+  
+Una de las características principales de los métodos de aprendizaje profundo, es no solo aprender una función que mapee un conjunto de datos de entrada a uno de salida, sino __la representación de los datos que sea *mejor* para el problema a resolver__.
+
+Estas representaciones son aprendidas en forma jerárquica, expresadas en términos de otras representaciones más simples. De esta forma, Deep Learning permite a la computadora construir conceptos complejos mediante complejos simples.
+
+Algunas aplicaciones. 
+
+Image captioning.
+
+<img src="figs/encoder-decoder1.png" height="60%" width="60%"/>
+
+Algunas aplicaciones. 
+
+Image captioning.
+
+<img src="figs/encoder-decoder1.png" height="60%" width="60%"/>
+
+Resúmen automático abstractivo
+
+<img src="figs/encoder-decoder2.png" height="60%" width="60%"/>
+
+Pronóstico de series de tiempo multivariadas
+
+<img src="figs/encoder-decoder3.png" height="60%" width="60%"/>
+
+### Aprendizaje basado en gradientes
+
+El aprendizaje para éste tipo de modelos sigue el mismo esquema que ya conocemos: 
+
+<img src="figs/ajuste1.jpg" height="40%" width="40%"/>
+
+Recuerda el paso Forward y Backwards.
+
+En el caso de redes profundas, el ajuste incluye conceptos como:
+
+- Representación y capas ocultas
+- Capas de salida
+- Funciones de costo
+- Ajuste
+- Optimización
+
+
+### Capas y unidades ocultas
+
+<img src="figs/activation.png" height="50%" width="50%"/>
+
+### Unidades de salida
+
+|Tipo de salida | Distribución| Capa de salida | Función de costo |
+| --- | --- | --- | --- |
+| Binaria | Bernoulli | Sigmoid | Binary cross-entropy |
+| Discreta | Multinomial | Softmax | Discrete cross-entropy |
+| Contínua | Gausiana | Lineal | MSE (Gaussian cross-entropy) |
+| Contínua | Mezcla de Gaussianas | Mezcla de densidades | Cross-entropy |
+
+
+### Funciones de costo
+
+- Error cuadrático medio
+\begin{align*}
+L(\boldsymbol{\theta})=\Vert \mathbf{y}-f(\mathbf{x};\boldsymbol{\theta})\Vert
+\end{align*}   
+
+- Cross entropy
+\begin{align*}
+L(\boldsymbol{\theta})=-E_{\mathbf{x}}\log P_{\text{model}}(\mathbf{y}|\mathbf{x})
+\end{align*}
+
+### Backpropagation
+
+Aplicación recursiva de la regla de la cadena. Sea $x=f(w), y=f(x), z=f(y)$
+
+<img src="figs/comput_graphs2.jpg" height="50%" width="50%"/>
