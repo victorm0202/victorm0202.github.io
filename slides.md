@@ -1903,6 +1903,42 @@ plt.show()
 ![png](output_85_0.png)
 
 
+
+```python
+X_train, X_test, y_train, y_test = train_test_split(bow, y1, test_size=0.2, random_state=42)
+
+svm = SVC(kernel='linear')
+svm.fit(X_train, y_train)
+y_pred = svm.predict(X_test)
+print(metrics.classification_report(y_test, y_pred))
+
+plt.rcParams['figure.figsize'] = (8, 6)
+disp1 = metrics.plot_confusion_matrix(svm, X_test, y_test, cmap=plt.cm.Blues, normalize = None)
+disp1.ax_.set_title('Matriz de confusion. Sin normalizar',{'fontsize':15})
+plt.show()
+```
+
+                  precision    recall  f1-score   support
+    
+               0       1.00      0.85      0.92        13
+               1       1.00      1.00      1.00        13
+               2       1.00      1.00      1.00        11
+               3       0.64      1.00      0.78         7
+               4       0.89      1.00      0.94         8
+               5       0.91      1.00      0.95        10
+               6       0.71      1.00      0.83         5
+               7       1.00      0.54      0.70        13
+    
+        accuracy                           0.90        80
+       macro avg       0.89      0.92      0.89        80
+    weighted avg       0.93      0.90      0.90        80
+    
+
+
+
+![png](output_86_1.png)
+
+
 ## BOW extensiones. TF-IDF (Salton and Buckley, 1988).
 
 Una extensión a la frecuencia de términos es una versión __pesada__ de los mismos.
@@ -2274,7 +2310,44 @@ plt.show()
 ```
 
 
-![png](output_91_0.png)
+![png](output_92_0.png)
+
+
+
+```python
+X_train2, X_test2, y_train2, y_test2 = train_test_split(tfidf, y1, test_size=0.2, random_state=42)
+
+svm = SVC(kernel='linear')
+svm.fit(X_train2, y_train2)
+y_pred2 = svm.predict(X_test2)
+print(metrics.classification_report(y_test2, y_pred2))
+
+plt.rcParams['figure.figsize'] = (8, 6)
+disp1 = metrics.plot_confusion_matrix(svm, X_test2, y_test2, cmap=plt.cm.Blues, normalize = None)
+disp1.ax_.set_title('Matriz de confusion. Sin normalizar',{'fontsize':15})
+plt.show()
+
+```
+
+                  precision    recall  f1-score   support
+    
+               0       1.00      0.92      0.96        13
+               1       1.00      1.00      1.00        13
+               2       1.00      0.91      0.95        11
+               3       0.70      1.00      0.82         7
+               4       0.88      0.88      0.88         8
+               5       1.00      1.00      1.00        10
+               6       0.62      1.00      0.77         5
+               7       1.00      0.69      0.82        13
+    
+        accuracy                           0.91        80
+       macro avg       0.90      0.92      0.90        80
+    weighted avg       0.94      0.91      0.92        80
+    
+
+
+
+![png](output_93_1.png)
 
 
 Si bien los modelos basados en representaciones tipo BOW son muy útiles para ciertas tareas y ciertos corpus de textos, para otros no es la mejor opción. 
@@ -2677,8 +2750,89 @@ L(\boldsymbol{\theta})=\Vert \mathbf{y}-f(\mathbf{x};\boldsymbol{\theta})\Vert
 L(\boldsymbol{\theta})=-E_{\mathbf{x}}\log P_{\text{model}}(\mathbf{y}|\mathbf{x})
 \end{align*}
 
-### Backpropagation
+### Regularización
 
-Aplicación recursiva de la regla de la cadena. Sea $x=f(w), y=f(x), z=f(y)$
+Un procedimiento de suma importancia. El objetivo es restringir el modelo para __reducir el error de generalización__ , no precisamente el de entrenamiento.
+
+\begin{align*}
+  L(\boldsymbol{\theta};\mathbf{X},\mathbf{y})+\alpha\Omega(\boldsymbol{\theta})
+\end{align*}
+
+La forma más común es regularizar mediante alguna norma $\Vert \cdot \Vert_{L}$, pero en redes profundas, es necesario otro tipo de métodos. Solo por mencionar algunos:
+- Early stopping
+- Dropout
+- Data augmentation
+
+### Ajuste
+
+Backpropagation: aplicación recursiva de la regla de la cadena. 
+
+Sea $x=f(w), y=f(x), z=f(y)$
 
 <img src="figs/comput_graphs2.jpg" height="50%" width="50%"/>
+
+### Ajuste
+
+#### Optimización. 
+Se usa descenso por gradiente, pero en éste caso, dada la complejidad del procedimiento (muchos parámetros, muchos datos), se utilizan métodos estocásticos.
+
+<img src="figs/optim9.jpg" height="50%" width="50%"/>
+
+### Ajuste
+
+#### Optimización. 
+
+La optimización en éstos modelos es compleja y generalmente, mal condicionada. Varios métodos se han propuesto para tratar de solucionar los problemas que surjen tomando en cuenta el costo computacional.
+
+- RMSprop
+- AdaGrad
+- ADAM
+- entre otros...
+
+### Recursos de cómputo. Software y hardware
+
+#### Hardware. 
+
+CPU (central process unit), GPU (graphic process unit), TPU (tensor process unit).
+
+<img src="figs/DL_hardware_.png" height="50%" width="50%"/>
+
+#### Software. 
+
+Actualmente, hay software especializado en manejo y operaciones con estructuras de datos apropiadas para redes neuronales profundas. Algunas tienen separado backend y frontend. Keras, por ejemplo, es una API que puede ejecutarse con ciertos backends, como tensorflow, theano, entre otros.
+
+<img src="figs/DL_software_chart_001.png" height="50%" width="50%"/>
+
+Ver también [Comparación de software para DL](https://en.wikipedia.org/wiki/Comparison_of_deep-learning_software#Comparison_of_compatibility_of_machine_learning_models).
+
+Nosotros usaremos
+
+<img src="figs/TF_Keras.png" height="50%" width="50%"/>
+
+
+### Conceptos relacionados
+
+####  Representación de datos mediante tensores.
+
+<img src="figs/tensors.png" height="50%" width="50%"/>
+
+
+Tensores para imágenes
+
+<img src="figs/tensors3.png" height="40%" width="40%"/>
+
+
+Tensores para secuencias
+
+<img src="figs/tensors2.png" height="40%" width="40%"/>
+
+
+- __Batch y mini batch__. Son una muestra, generalmente pequeña (entre 8 y 128) de los datos. Representan una __partición__ de los datos de entrenamiento o prueba, y se almacenan en un tensor de dimensión arbitraria, pero el primer eje (axis) identifica el batch (tensorflow).
+
+
+- __Época__. Es un término para indicar que todas las muestras del conjunto de entrenamiento han sido usadas para actualizar los parámetros del modelo, es decir, han completado el paso forward y backward. En consecuencia, todos los batches han sido usados para el procedimiento de optimización.
+
+
+- __Iteración__. El número de batches necesario para completar una época.
+
+__Ejemplo__. Clasificación de sentimiento en reseñas de películas (En Notebook)
