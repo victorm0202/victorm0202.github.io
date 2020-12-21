@@ -75,291 +75,6 @@ nlp = wikipedia.page('Natural language processing')
 print(nlp.content)
 ```
 
-    Natural language processing (NLP) is a subfield of linguistics, computer science, and artificial intelligence concerned with the interactions between computers and human language, in particular how to program computers to process and analyze large amounts of natural language data.  The result is a computer capable of ‘understanding’ the contents of documents, including the contextual nuances of the language within them. The technology can then accurately extract information and insights contained in the documents as well as categorize and organize the documents themselves. 
-    Challenges in natural language processing frequently involve speech recognition, natural language understanding, and natural-language generation.
-    
-    
-    == History ==
-    
-    Natural language processing has its roots in the 1950s. Already in 1950, Alan Turing published an article titled "Computing Machinery and Intelligence" which proposed what is now called the Turing test as a criterion of intelligence, a task that involves the automated interpretation and generation of natural language, but at the time not articulated as a problem separate from artificial intelligence.
-    
-    
-    === Symbolic NLP (1950s - early 1990s) ===
-    The premise of symbolic NLP is well-summarized by John Searle's Chinese room experiment: Given a collection of rules (e.g., a Chinese phrasebook, with questions and matching answers), the computer emulates natural language understanding (or other NLP tasks) by applying those rules to the data it is confronted with.
-    
-    1950s: The Georgetown experiment in 1954 involved fully automatic translation of more than sixty Russian sentences into English. The authors claimed that within three or five years, machine translation would be a solved problem.  However, real progress was much slower, and after the ALPAC report in 1966, which found that ten-year-long research had failed to fulfill the expectations, funding for machine translation was dramatically reduced.  Little further research in machine translation was conducted until the late 1980s when the first statistical machine translation systems were developed.
-    1960s: Some notably successful natural language processing systems developed in the 1960s were SHRDLU, a natural language system working in restricted "blocks worlds" with restricted vocabularies, and ELIZA, a simulation of a Rogerian psychotherapist, written by Joseph Weizenbaum between 1964 and 1966.  Using almost no information about human thought or emotion, ELIZA sometimes provided a startlingly human-like interaction. When the "patient" exceeded the very small knowledge base, ELIZA might provide a generic response, for example, responding to "My head hurts" with "Why do you say your head hurts?".
-    1970s: During the 1970s, many programmers began to write "conceptual ontologies", which structured real-world information into computer-understandable data.  Examples are MARGIE (Schank, 1975), SAM (Cullingford, 1978), PAM (Wilensky, 1978), TaleSpin (Meehan, 1976), QUALM (Lehnert, 1977), Politics (Carbonell, 1979), and Plot Units (Lehnert 1981).  During this time, the first many chatterbots were written (e.g., PARRY).
-    1980s: The 1980s and early 1990s mark the hey-day of symbolic methods in NLP. Focus areas of the time included research on rule-based parsing (e.g., the development of HPSG as a computational operationalization of generative grammar), morphology (e.g., two-level morphology), semantics (e.g., Lesk algorithm), reference (e.g., within Centering Theory) and other areas of natural language understanding (e.g., in the Rhetorical Structure Theory). Other lines of research were continued, e.g., the development of chatterbots with Racter and Jabberwacky. An important development (that eventually led to the statistical turn in the 1990s) was the rising importance of quantitative evaluation in this period.
-    
-    
-    === Statistical NLP (1990s - 2010s) ===
-    Up to the 1980s, most natural language processing systems were based on complex sets of hand-written rules.  Starting in the late 1980s, however, there was a revolution in natural language processing with the introduction of machine learning algorithms for language processing.  This was due to both the steady increase in computational power (see Moore's law) and the gradual lessening of the dominance of Chomskyan theories of linguistics (e.g. transformational grammar), whose theoretical underpinnings discouraged the sort of corpus linguistics that underlies the machine-learning approach to language processing.
-    1990s: Many of the notable early successes on statistical methods in NLP occurred in the field of machine translation, due especially to work at IBM Research.  These systems were able to take advantage of existing multilingual textual corpora that had been produced by the Parliament of Canada and the European Union as a result of laws calling for the translation of all governmental proceedings into all official languages of the corresponding systems of government.  However, most other systems depended on corpora specifically developed for the tasks implemented by these systems, which was (and often continues to be) a major limitation in the success of these systems. As a result, a great deal of research has gone into methods of more effectively learning from limited amounts of data.
-    2000s: With the growth of the web, increasing amounts of raw (unannotated) language data has become available since the mid-1990s. Research has thus increasingly focused on unsupervised and semi-supervised learning algorithms.  Such algorithms can learn from data that has not been hand-annotated with the desired answers or using a combination of annotated and non-annotated data.  Generally, this task is much more difficult than supervised learning, and typically produces less accurate results for a given amount of input data.  However, there is an enormous amount of non-annotated data available (including, among other things, the entire content of the World Wide Web), which can often make up for the inferior results if the algorithm used has a low enough time complexity to be practical.
-    
-    
-    === Neural NLP (present) ===
-    In the 2010s, representation learning and deep neural network-style machine learning methods became widespread in natural language processing, due in part to a flurry of results showing that such techniques can achieve state-of-the-art results in many natural language tasks, for example in language modeling, parsing, and many others.
-    
-    
-    == Methods: Rules, statistics, neural networks ==
-    In the early days, many language-processing systems were designed by symbolic methods, i.e., the hand-coding of a set of rules, coupled with a dictionary lookup: such as by writing grammars or devising heuristic rules for stemming.
-    More recent systems based on machine-learning algorithms have many advantages over hand-produced rules: 
-    
-    The learning procedures used during machine learning automatically focus on the most common cases, whereas when writing rules by hand it is often not at all obvious where the effort should be directed.
-    Automatic learning procedures can make use of statistical inference algorithms to produce models that are robust to unfamiliar input (e.g. containing words or structures that have not been seen before) and to erroneous input (e.g. with misspelled words or words accidentally omitted). Generally, handling such input gracefully with handwritten rules, or, more generally, creating systems of handwritten rules that make soft decisions, is extremely difficult, error-prone and time-consuming.
-    Systems based on automatically learning the rules can be made more accurate simply by supplying more input data. However, systems based on handwritten rules can only be made more accurate by increasing the complexity of the rules, which is a much more difficult task. In particular, there is a limit to the complexity of systems based on handwritten rules, beyond which the systems become more and more unmanageable. However, creating more data to input to machine-learning systems simply requires a corresponding increase in the number of man-hours worked, generally without significant increases in the complexity of the annotation process.Despite the popularity of machine learning in NLP research, symbolic methods are still (2020) commonly used
-    
-    when the amount of training data is insufficient to successfully apply machine learning methods, e.g., for the machine translation of low-resource languages such as provided by the Apertium system,
-    for preprocessing in NLP pipelines, e.g., tokenization, or
-    for postprocessing and transforming the output of NLP pipelines, e.g., for knowledge extraction from syntactic parses.
-    
-    
-    === Statistical methods ===
-    Since the so-called "statistical revolution" in the late 1980s and mid-1990s, much natural language processing research has relied heavily on machine learning. The machine-learning paradigm calls instead for using statistical inference to automatically learn such rules through the analysis of large corpora (the plural form of corpus, is a set of documents, possibly with human or computer annotations) of typical real-world examples.
-    Many different classes of machine-learning algorithms have been applied to natural-language-processing tasks. These algorithms take as input a large set of "features" that are generated from the input data. Increasingly, however, research has focused on statistical models, which make soft, probabilistic decisions based on attaching real-valued weights to each input feature. Such models have the advantage that they can express the relative certainty of many different possible answers rather than only one, producing more reliable results when such a model is included as a component of a larger system.
-    Some of the earliest-used machine learning algorithms, such as decision trees, produced systems of hard if-then rules similar to existing hand-written rules.  However, part-of-speech tagging introduced the use of hidden Markov models to natural language processing, and increasingly, research has focused on statistical models, which make soft, probabilistic decisions based on attaching real-valued weights to the features making up the input data. The cache language models upon which many speech recognition systems now rely are examples of such statistical models.  Such models are generally more robust when given unfamiliar input, especially input that contains errors (as is very common for real-world data), and produce more reliable results when integrated into a larger system comprising multiple subtasks.
-    Since the neural turn, statistical methods in NLP research have been largely replaced by neural networks. However, they continue to be relevant for contexts in which statistical interpretability and transparency is required.
-    
-    
-    === Neural networks ===
-    
-    A major drawback of statistical methods is that they require elaborate feature engineering. Since the early 2010s, the field has thus largely abandoned statistical methods and shifted to neural networks for machine learning. Popular techniques include the use of word embeddings to capture semantic properties of words, and an increase in end-to-end learning of a higher-level task (e.g., question answering) instead of relying on a pipeline of separate intermediate tasks (e.g., part-of-speech tagging and dependency parsing). In some areas, this shift has entailed substantial changes in how NLP systems are designed, such that deep neural network-based approaches may be viewed as a new paradigm distinct from statistical natural language processing. For instance, the term neural machine translation (NMT) emphasizes the fact that deep learning-based approaches to machine translation directly learn sequence-to-sequence transformations, obviating the need for intermediate steps such as word alignment and language modeling that was used in statistical machine translation (SMT).
-    
-    
-    == Common NLP Tasks ==
-    The following is a list of some of the most commonly researched tasks in natural language processing. Some of these tasks have direct real-world applications, while others more commonly serve as subtasks that are used to aid in solving larger tasks.
-    Though natural language processing tasks are closely intertwined, they can be subdivided into categories for convenience. A coarse division is given below.
-    
-    
-    === Text and speech processing ===
-    Optical character recognition (OCR)
-    Given an image representing printed text, determine the corresponding text.Speech recognition
-    Given a sound clip of a person or people speaking, determine the textual representation of the speech.  This is the opposite of text to speech and is one of the extremely difficult problems colloquially termed "AI-complete" (see above).  In natural speech there are hardly any pauses between successive words, and thus speech segmentation is a necessary subtask of speech recognition (see below). In most spoken languages, the sounds representing successive letters blend into each other in a process termed coarticulation, so the conversion of the analog signal to discrete characters can be a very difficult process. Also, given that words in the same language are spoken by people with different accents, the speech recognition software must be able to recognize the wide variety of input as being identical to each other in terms of its textual equivalent.
-    Speech segmentation
-    Given a sound clip of a person or people speaking, separate it into words.  A subtask of speech recognition and typically grouped with it.Text-to-speech
-    Given a text, transform those units and produce a spoken representation. Text-to-speech can be used to aid the visually impaired.Word segmentation (Tokenization)
-    Separate a chunk of continuous text into separate words. For a language like English, this is fairly trivial, since words are usually separated by spaces. However, some written languages like Chinese, Japanese and Thai do not mark word boundaries in such a fashion, and in those languages text segmentation is a significant task requiring knowledge of the vocabulary and morphology of words in the language. Sometimes this process is also used in cases like bag of words (BOW) creation in data mining.
-    
-    
-    === Morphological analysis ===
-    Lemmatization
-    The task of removing inflectional endings only and to return the base dictionary form of a word which is also known as a lemma.
-    Morphological segmentation
-    Separate words into individual morphemes and identify the class of the morphemes. The difficulty of this task depends greatly on the complexity of the morphology (i.e., the structure of words) of the language being considered. English has fairly simple morphology, especially inflectional morphology, and thus it is often possible to ignore this task entirely and simply model all possible forms of a word (e.g., "open, opens, opened, opening") as separate words. In languages such as Turkish or Meitei, a highly agglutinated Indian language, however, such an approach is not possible, as each dictionary entry has thousands of possible word forms.
-    Part-of-speech tagging
-    Given a sentence, determine the part of speech (POS) for each word. Many words, especially common ones, can serve as multiple parts of speech. For example, "book" can be a noun ("the book on the table") or verb ("to book a flight"); "set" can be a noun, verb or adjective; and "out" can be any of at least five different parts of speech. Some languages have more such ambiguity than others. Languages with little inflectional morphology, such as English, are particularly prone to such ambiguity. Chinese is prone to such ambiguity because it is a tonal language during verbalization. Such inflection is not readily conveyed via the entities employed within the orthography to convey the intended meaning.Stemming
-    The process of reducing inflected (or sometimes derived) words to their root form. (e.g., "close" will be the root for "closed", "closing", "close", "closer" etc.).
-    
-    
-    === Syntactic analysis ===
-    Grammar induction
-    Generate a formal grammar that describes a language's syntax.
-    Sentence breaking (also known as "sentence boundary disambiguation")
-    Given a chunk of text, find the sentence boundaries. Sentence boundaries are often marked by periods or other punctuation marks, but these same characters can serve other purposes (e.g., marking abbreviations).
-    Parsing
-    Determine the parse tree (grammatical analysis) of a given sentence. The grammar for natural languages is ambiguous and typical sentences have multiple possible analyses: perhaps surprisingly, for a typical sentence there may be thousands of potential parses (most of which will seem completely nonsensical to a human). There are two primary types of parsing: dependency parsing and constituency parsing. Dependency parsing focuses on the relationships between words in a sentence (marking things like primary objects and predicates), whereas constituency parsing focuses on building out the parse tree using a probabilistic context-free grammar (PCFG) (see also stochastic grammar).
-    
-    
-    === Lexical semantics (of individual words in context) ===
-    Lexical semantics
-    What is the computational meaning of individual words in context?
-    Distributional semantics
-    How can we learn semantic representations from data?
-    Named entity recognition (NER)
-    Given a stream of text, determine which items in the text map to proper names, such as people or places, and what the type of each such name is (e.g. person, location, organization). Although capitalization can aid in recognizing named entities in languages such as English, this information cannot aid in determining the type of named entity, and in any case, is often inaccurate or insufficient.  For example, the first letter of a sentence is also capitalized, and named entities often span several words, only some of which are capitalized.  Furthermore, many other languages in non-Western scripts (e.g. Chinese or Arabic) do not have any capitalization at all, and even languages with capitalization may not consistently use it to distinguish names. For example, German capitalizes all nouns, regardless of whether they are names, and French and Spanish do not capitalize names that serve as adjectives.Sentiment analysis (see also multimodal sentiment analysis)
-    Extract subjective information usually from a set of documents, often using online reviews to determine "polarity" about specific objects. It is especially useful for identifying trends of public opinion in social media, for marketing.Terminology extractionThe goal of terminology extraction is to automatically extract relevant terms from a given corpus.
-    Word sense disambiguation
-    Many words have more than one meaning; we have to select the meaning which makes the most sense in context.  For this problem, we are typically given a list of words and associated word senses, e.g. from a dictionary or an online resource such as WordNet.
-    
-    
-    === Relational semantics (semantics of individual sentences) ===
-    Relationship extraction
-    Given a chunk of text, identify the relationships among named entities (e.g. who is married to whom).
-    Semantic Parsing
-    Given a piece of text (typically a sentence), produce a formal representation of its semantics, either as a graph (e.g., in AMR parsing) or in accordance with a logical formalism (e.g., in DRT parsing). This challenge typically includes aspects of several more elementary NLP tasks from semantics (e.g., semantic role labelling, word sense disambiguation) and can be extended to include full-fledged discourse analysis (e.g., discourse analysis, coreference; see Natural Language Understanding below).
-    Semantic Role Labelling (see also implicit semantic role labelling below)
-    Given a single sentence, identify and disambiguate semantic predicates (e.g., verbal frames), then identify and classify the frame elements (semantic roles).
-    
-    
-    === Discourse (semantics beyond individual sentences) ===
-    Coreference resolution
-    Given a sentence or larger chunk of text, determine which words ("mentions") refer to the same objects ("entities"). Anaphora resolution is a specific example of this task, and is specifically concerned with matching up pronouns with the nouns or names to which they refer. The more general task of coreference resolution also includes identifying so-called "bridging relationships" involving referring expressions. For example, in a sentence such as "He entered John's house through the front door", "the front door" is a referring expression and the bridging relationship to be identified is the fact that the door being referred to is the front door of John's house (rather than of some other structure that might also be referred to).
-    Discourse analysis
-    This rubric includes several related tasks.  One task is discourse parsing, i.e., identifying the discourse structure of a connected text, i.e. the nature of the discourse relationships between sentences (e.g. elaboration, explanation, contrast).  Another possible task is recognizing and classifying the speech acts in a chunk of text (e.g. yes-no question, content question, statement, assertion, etc.).Implicit Semantic Role Labelling
-    Given a single sentence, identify and disambiguate semantic predicates (e.g., verbal frames) and their explicit semantic roles in the current sentence (see Semantic Role Labelling above). Then, identify semantic roles that are not explicitly realized in the current sentence, classify them into arguments that are explicitly realized elsewhere in the text and those that are not specified, and resolve the former against the local text. A closely related task is zero anaphora resolution, i.e., the extension of coreference resolution to pro-drop languages.Recognizing Textual entailment
-    Given two text fragments, determine if one being true entails the other, entails the other's negation, or allows the other to be either true or false.Topic segmentation and recognition
-    Given a chunk of text, separate it into segments each of which is devoted to a topic, and identify the topic of the segment.
-    
-    
-    === Higher-level NLP applications ===
-    Automatic summarization (text summarization)
-    Produce a readable summary of a chunk of text.  Often used to provide summaries of the text of a known type, such as research papers, articles in the financial section of a newspaper.
-    Book generation
-    Not an NLP task proper but an extension of Natural Language Generation and other NLP tasks is the creation of full-fledged books. The first machine-generated book was created by a rule-based system in 1984 (Racter, The policeman's beard is half-constructed). The first published work by a neural network was published in 2018, 1 the Road, marketed as a novel, contains sixty million words. Both these systems are basically elaborate but non-sensical (semantics-free) language models. The first machine-generated science book was published in 2019 (Beta Writer, Lithium-Ion Batteries, Springer, Cham). Unlike Racter and 1 the Road, this is grounded on factual knowledge and based on text summarization.
-    Dialogue management
-    Computer systems intended to converse with a human.
-    Document AI
-    A Document AI platform sits on top of the NLP technology enabling users with no prior experience of artificial intelligence, machine learning or NLP to quickly train a computer to extract the specific data they need from different document types. NLP-powered Document AI enables non-technical teams to quickly access information hidden in documents, for example, lawyers, business analysts and accountants.
-    Machine translation
-    Automatically translate text from one human language to another.  This is one of the most difficult problems, and is a member of a class of problems colloquially termed "AI-complete", i.e. requiring all of the different types of knowledge that humans possess (grammar, semantics, facts about the real world, etc.) to solve properly.
-    Natural language generation (NLG):
-    Convert information from computer databases or semantic intents into readable human language.
-    Natural language understanding (NLU)
-    Convert chunks of text into more formal representations such as first-order logic structures that are easier for computer programs to manipulate. Natural language understanding involves the identification of the intended semantic from the multiple possible semantics which can be derived from a natural language expression which usually takes the form of organized notations of natural language concepts. Introduction and creation of language metamodel and ontology are efficient however empirical solutions. An explicit formalization of natural language semantics without confusions with implicit assumptions such as closed-world assumption (CWA) vs. open-world assumption, or subjective Yes/No vs. objective True/False is expected for the construction of a basis of semantics formalization.
-    Question answering
-    Given a human-language question, determine its answer.  Typical questions have a specific right answer (such as "What is the capital of Canada?"), but sometimes open-ended questions are also considered (such as "What is the meaning of life?"). Recent works have looked at even more complex questions.
-    
-    
-    == Cognition and NLP ==
-    Cognition refers to "the mental action or process of acquiring knowledge and understanding through thought, experience, and the senses." Cognitive science is the interdisciplinary, scientific study of the mind and its processes. Cognitive linguistics is an interdisciplinary branch of linguistics, combining knowledge and research from both psychology and linguistics.  George Lakoff offers a methodology to build Natural language processing (NLP) algorithms through the perspective of Cognitive science, along with the findings of Cognitive linguistics:The first defining aspect of this cognitive task of NLP is the application of the theory of Conceptual metaphor, explained by Lakoff as “the understanding of one idea, in terms of another” which provides an idea of the intent of the author.For example, consider some of the meanings, in English, of the word “big”. When used as a Comparative, as in “That is a big tree,” a likely inference of the intent of the author is that the author is using the word “big” to imply a statement about the tree being ”physically large” in comparison to other trees or the authors experience.  When used as a Stative verb, as in ”Tomorrow is a big day”, a likely inference of the author’s intent it that ”big” is being used to imply ”importance”.  These examples are not presented to be complete, but merely as indicators of the implication of the idea of Conceptual metaphor.  The intent behind other usages, like in ”She is a big person” will remain somewhat ambiguous to a person and a cognitive NLP algorithm alike without additional information.
-    This leads to the second defining aspect of this cognitive task of NLP, namely Probabilistic context-free grammar (PCFG) which enables cognitive NLP algorithms to assign relative measures of meaning  to a word, phrase, sentence or piece of text based on the information presented before and after the piece of text being analyzed. The mathematical equation for such algorithms is presented in US patent 9269353 :
-    
-      
-        
-          
-            
-              R
-              M
-              M
-              (
-              t
-              o
-              k
-              e
-              
-                n
-                
-                  N
-                
-              
-              )
-            
-            =
-            
-              P
-              M
-              M
-              (
-              t
-              o
-              k
-              e
-              
-                n
-                
-                  N
-                
-              
-              )
-            
-            ×
-            
-              
-                1
-                
-                  2
-                  d
-                
-              
-            
-            
-              (
-              
-                
-                  ∑
-                  
-                    i
-                    =
-                    −
-                    d
-                  
-                  
-                    d
-                  
-                
-                
-                  (
-                  (
-                  P
-                  M
-                  M
-                  (
-                  t
-                  o
-                  k
-                  e
-                  
-                    n
-                    
-                      N
-                      −
-                      1
-                    
-                  
-                  )
-                
-                ×
-                
-                  P
-                  F
-                  (
-                  t
-                  o
-                  k
-                  e
-                  
-                    n
-                    
-                      N
-                    
-                  
-                  ,
-                  t
-                  o
-                  k
-                  e
-                  
-                    n
-                    
-                      N
-                      −
-                      1
-                    
-                  
-                  )
-                  
-                    )
-                    
-                      i
-                    
-                  
-                
-              
-              )
-            
-          
-        
-        {\displaystyle {RMM(token_{N})}={PMM(token_{N})}\times {\frac {1}{2d}}\left(\sum _{i=-d}^{d}{((PMM(token_{N-1})}\times {PF(token_{N},token_{N-1}))_{i}}\right)}
-      Where,
-         RMM, is the Relative Measure of Meaning
-         token, is any block of text, sentence, phrase or word
-         N, is the number of tokens being analyzed
-         PMM, is the Probable Measure of Meaning based on a corpora
-         d, is the location of the token along the sequence of N-1 tokens
-         PF, is the Probability Function specific to a language
-    
-    
-    == See also ==
-    
-    
-    == References ==
-    
-    
-    == Further reading ==
-
-
 Independientemente de la tarea o aplicación, necesitamos una __representación eficiente__ del texto.
 
 *...it is not enough to simply provide a computer with a large amount of data and expect it to learn to speak --the data has to be prepared in such a way that the computer can more easily find patterns and inferences.''*
@@ -1366,7 +1081,7 @@ sim_df.index = t_data['file']
 
 
 ```python
-f, ax = plt.subplots(figsize=(12, 10))
+f, ax = plt.subplots(figsize=(10, 8))
 hm = sns.heatmap(sim_df, annot=False, ax=ax, cmap="coolwarm",fmt='.2f',
             xticklabels = False, yticklabels = False)
 #f.subplots_adjust(top=0.93)
@@ -1514,6 +1229,20 @@ pca_bow = pd.DataFrame({'pc1': proj['pc1'], 'pc2': proj['pc2'], 'tipo': t_data['
 
 
 ```python
+import seaborn as sns
+sns.scatterplot(data = pca_bow, x='pc1', y='pc2', hue='tipo')
+sns.set(style='whitegrid',)
+plt.show()
+```
+
+
+![png](output_69_0.png)
+
+
+Gráfica interactiva
+
+
+```python
 fig = px.scatter(pca_bow, x='pc1', y='pc2', hover_data=['tipo'], color = 'tipo')
 fig.update_layout(
     autosize=False,
@@ -1584,6 +1313,19 @@ pca_bow = pd.DataFrame({'pc1': proj['pc1'], 'pc2': proj['pc2'], 'tipo': t_data['
 
 
 ```python
+import seaborn as sns
+sns.scatterplot(data = pca_bow, x='pc1', y='pc2', hue='tipo')
+sns.set(style='whitegrid',)
+plt.show()
+```
+
+
+![png](output_74_0.png)
+
+
+
+```python
+# Grafica interactiva
 fig = px.scatter(pca_bow, x='pc1', y='pc2', hover_data=['tipo'], color = 'tipo')
 fig.update_layout(
     autosize=False,
@@ -1611,72 +1353,6 @@ fig.show()
                     ).then(function(){
 
 var gd = document.getElementById('06398418-b2e4-4ac0-8b5c-ed5a75a01991');
-var x = new MutationObserver(function (mutations, observer) {{
-        var display = window.getComputedStyle(gd).display;
-        if (!display || display === 'none') {{
-            console.log([gd, 'removed!']);
-            Plotly.purge(gd);
-            observer.disconnect();
-        }}
-}});
-
-// Listen for the removal of the full notebook cells
-var notebookContainer = gd.closest('#notebook-container');
-if (notebookContainer) {{
-    x.observe(notebookContainer, {childList: true});
-}}
-
-// Listen for the clearing of the current output cell
-var outputEl = gd.closest('.output');
-if (outputEl) {{
-    x.observe(outputEl, {childList: true});
-}}
-
-                        })
-                };
-                });
-            </script>
-        </div>
-
-
-
-```python
-X = StandardScaler().fit_transform(bow)
-sigma = .001
-kpca = KernelPCA(n_components=5, kernel='rbf', gamma=1/sigma)
-bow_kpca = kpca.fit_transform(X)
-proj = pd.DataFrame(bow_kpca,columns = ['pc1','pc2','pc3','pc4','pc5'])
-
-kpca_bow = pd.DataFrame({'pc1': proj['pc1'], 'pc2': proj['pc2'], 'tipo': t_data['categoria'],
-                       'clus':cl_pred})
-
-fig = px.scatter(kpca_bow, x='pc1', y='pc2', hover_data=['tipo'], color = 'tipo')
-fig.update_layout(
-    autosize=False,
-    width=600,
-    height=600,
-)
-fig.show()
-```
-
-
-<div>
-
-
-            <div id="ec86aedc-dd7a-4949-b247-8edfdaa97e2b" class="plotly-graph-div" style="height:600px; width:600px;"></div>
-            <script type="text/javascript">
-                require(["plotly"], function(Plotly) {
-                    window.PLOTLYENV=window.PLOTLYENV || {};
-
-                if (document.getElementById("ec86aedc-dd7a-4949-b247-8edfdaa97e2b")) {
-                    Plotly.newPlot(
-                        'ec86aedc-dd7a-4949-b247-8edfdaa97e2b',
-                        [{"customdata": [["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"], ["coches"]], "hovertemplate": "tipo=%{customdata[0]}<br>pc1=%{x}<br>pc2=%{y}<extra></extra>", "legendgroup": "coches", "marker": {"color": "#636efa", "symbol": "circle"}, "mode": "markers", "name": "coches", "orientation": "v", "showlegend": true, "type": "scatter", "x": [-0.005006277466376772, -0.005006277466376762, -0.005006277466376762, -0.005006277466376782, -0.005006277466376787, -0.005006277466376743, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376772, -0.005006277466376772, -0.005006277466376782, -0.005006277466376782, -0.005006277466376775, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376772, -0.005006277466376782, -0.005006277466376791, 0.9962492158089772, -0.005006277466376772, -0.005006277466376791, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.0050062774663767766, -0.005006277466376791, -0.005006277466376743, -0.005006277466376782, -0.005006277466376802, -0.005006277466376791, -0.005006277466376762, -0.005006277466376782, 0.9962492158089772, -0.005006277466376782, -0.005006277466376782, -0.005006277466376762, -0.0050062774663767965, -0.0050062774663767965, -0.0050062774663767766, -0.005006277466376772, -0.005006277466376787, -0.005006277466376787, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376772, -0.005006277466376762], "xaxis": "x", "y": [0.0009900490524058301, 0.11545636870698674, -0.0047340283511778, -0.06677121389592294, 0.014381320885207518, 0.03411339045322106, -0.004571768417443039, -0.09235397989979724, 0.025221617474185474, -0.04831371438565377, -0.0015754245183527565, 0.0006196666075213718, 0.13535000388849852, 0.33838356760532873, 0.0057888083105828055, 0.019561511507016162, 0.003271800339780364, -0.02222092361546374, -0.022968588931397846, -0.01743059312649699, 0.014068540482312259, 1.1102230246251573e-16, -0.005553878785459491, -0.015468751831967543, -0.10703884181487143, -0.014545743614402511, -0.004801971302448502, 0.011437109003569371, -0.02810422244161995, -0.05380648016331339, 0.027899631741820207, 0.031245086184891056, 0.007137371532349471, 0.23282293748854538, -0.12557279691372614, 0.0, -0.012888151151851277, 0.011313715121761821, -0.0023929494514366104, -0.014048941211065586, -0.012597842106792255, -0.0087761805682661, -0.005590734752487985, -0.0028204070221887288, 0.0037551209272737402, 0.011054186866918406, -0.006325488746434596, -0.0014477808249305371, 0.00036080723075793846, -0.09885690482388641], "yaxis": "y"}, {"customdata": [["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"], ["hoteles"]], "hovertemplate": "tipo=%{customdata[0]}<br>pc1=%{x}<br>pc2=%{y}<extra></extra>", "legendgroup": "hoteles", "marker": {"color": "#EF553B", "symbol": "circle"}, "mode": "markers", "name": "hoteles", "orientation": "v", "showlegend": true, "type": "scatter", "x": [-0.005006277466376787, -0.005006277466376782, -0.0050062774663767766, -0.005006277466376782, -0.005006277466376762, -0.005006277466376802, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376821, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376762, -0.005006277466376796, -0.005006277466376772, -0.005006277466376772, -0.005006277466376767, -0.005006277466376782, -0.005006277466376782, -0.005006277466376762, -0.0050062774663767766, -0.005006277466376782, -0.005006277466376772, -0.005006277466376782, -0.005006277466376762, -0.005006277466376791, -0.005006277466376782, -0.005006277466376782, -0.005006277466376772, -0.005006277466376782, -0.005006277466376791, -0.005006277466376743, -0.005006277466376802, -0.005006277466376782, -0.005006277466376791, -0.005006277466376772, -0.005006277466376777, -0.005006277466376782, -0.005006277466376787, -0.005006277466376783, -0.005006277466376743, -0.005006277466376791, -0.005006277466376791, -0.005006277466376782, -0.005006277466376791, -0.005006277466376806], "xaxis": "x", "y": [9.460728831511146e-05, -0.020453897121973215, -0.011219053244881524, 0.03389918268445324, -0.0009534287087784733, 0.010545769919863585, -0.001222309605632064, -0.013797262367714844, -0.0049448391907792565, -0.10096441628648704, -0.10681420988908347, -0.013263637902558268, -0.0036022369431894683, 0.0053584562830573355, 0.0006802889200635616, 0.003420374638813952, 0.062366422295968754, -0.016422243308824132, -0.00023087315983369455, -0.008062716085574342, -0.19152744985930387, -0.014403161841759136, 0.006219915926246479, -0.04708750871731535, 0.00063697895719439, 0.047037343405364244, 0.0018737836948572186, -0.006738994032058997, -0.027244341098751814, -0.037244831461900454, -0.0059209414020297115, -0.016704726545964877, -0.23303940145725427, 0.017122329005751984, 0.034732559082765284, 0.19543220530628733, -0.0033554976747295095, 0.022914338485361424, -0.014638640781031411, -0.004006734277062769, 0.0437616042188546, -0.0019681120229215142, -0.016389113893041086, -0.006878184083355725, 0.008940513867459794, 0.016020710218581986, 0.15041644849408264, -0.02332996787388869, 0.010173231351520776, 0.0006968176310075129], "yaxis": "y"}, {"customdata": [["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"], ["lavadoras"]], "hovertemplate": "tipo=%{customdata[0]}<br>pc1=%{x}<br>pc2=%{y}<extra></extra>", "legendgroup": "lavadoras", "marker": {"color": "#00cc96", "symbol": "circle"}, "mode": "markers", "name": "lavadoras", "orientation": "v", "showlegend": true, "type": "scatter", "x": [-0.005006277466376791, -0.005006277466376772, -0.005006277466376782, -0.005006277466376802, -0.0050062774663767965, -0.0050062774663767766, -0.005006277466376791, -0.005006277466376772, -0.005006277466376787, -0.005006277466376772, -0.005006277466376743, -0.005006277466376787, -0.005006277466376791, -0.005006277466376772, -0.005006277466376762, -0.005006277466376782, -0.005006277466376782, -0.005006277466376772, -0.005006277466376782, -0.005006277466376791, -0.005006277466376782, -0.005006277466376776, -0.0050062774663767766, -0.005006277466376791, -0.005006277466376787, -0.005006277466376782, -0.005006277466376767, -0.005006277466376796, -0.005006277466376782, -0.005006277466376772, -0.005006277466376762, -0.005006277466376791, -0.005006277466376772, -0.005006277466376782, -0.005006277466376782, -0.005006277466376802, -0.005006277466376787, -0.005006277466376782, -0.005006277466376762, -0.005006277466376788, -0.005006277466376772, -0.005006277466376782, -0.005006277466376782, -0.005006277466376791, -0.005006277466376782, -0.005006277466376772, -0.005006277466376791, -0.005006277466376791, -0.005006277466376786, -0.0050062774663767766], "xaxis": "x", "y": [0.0007278119163201262, -0.03817211989697784, 0.5927060241035145, 0.03892565691541595, 0.12621911192233978, -0.020373287401720203, 0.07057659006582197, -0.008232745904240798, -0.023460634114945377, -0.002115873681150711, -0.04111135975523213, -0.041479044842360285, -0.008469686281519123, -0.011187356005381843, 0.007393776664838049, -0.021883981938635416, 0.02164538192918745, -0.020495597013440003, 0.07707240786884254, -0.03622430979431459, 0.010688076310869238, -0.010490503484235143, 0.003196310383142028, 0.017466170395554013, 0.005546446451655914, -0.010512026917229383, 0.03637888983289149, -0.00440321298082542, -0.008792209766729417, -0.0409931692842255, 0.028188539182428442, -0.03530136217651274, -0.007528249159499975, -0.017105793500409267, -0.004861517402405157, -0.025401111275040803, 0.008553115657967137, -0.01907217895976674, -0.006967883589090102, -0.005425152183123939, -0.03942719427792858, -0.005858186623687905, 0.001670380085244069, -0.0029456695549014444, 0.01680824338041927, -0.0022676923352170724, 0.0019208111990259027, 0.0122299457290537, -0.0018178620847403792, 0.001371891420479548], "yaxis": "y"}, {"customdata": [["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"], ["libros"]], "hovertemplate": "tipo=%{customdata[0]}<br>pc1=%{x}<br>pc2=%{y}<extra></extra>", "legendgroup": "libros", "marker": {"color": "#ab63fa", "symbol": "circle"}, "mode": "markers", "name": "libros", "orientation": "v", "showlegend": true, "type": "scatter", "x": [-0.005006277466376782, -0.005006277466376802, -0.005006277466376802, -0.005006277466376762, -0.005006277466376782, -0.005006277466376781, -0.005006277466376762, -0.005006277466376772, -0.005006277466376782, -0.005006277466376782, -0.005006277466376762, -0.005006277466376782, -0.005006277466376791, -0.005006277466376782, -0.005006277466376802, -0.005006277466376772, -0.0050062774663767766, -0.005006277466376782, -0.005006277466376811, -0.005006277466376772, -0.005006277466376791, -0.005006277466376782, -0.005006277466376782, -0.005006277466376787, -0.0050062774663767705, -0.005006277466376788, -0.005006277466376784, -0.005006277466376779, -0.005006277466376772, -0.005006277466376782, -0.005006277466376802, -0.005006277466376743, -0.005006277466376772, -0.005006277466376782, -0.005006277466376782, -0.005006277466376772, -0.005006277466376762, -0.005006277466376791, -0.005006277466376772, -0.005006277466376782, -0.005006277466376762, -0.005006277466376772, -0.005006277466376772, -0.005006277466376787, -0.005006277466376782, -0.005006277466376791, -0.005006277466376794, -0.005006277466376787, -0.005006277466376782, -0.005006277466376791], "xaxis": "x", "y": [0.0023404416541333174, 0.05849213775223347, 0.022690630710943585, 0.009586235828143566, 0.05458703167460422, -0.006134748682654322, 0.0012565161183873555, -0.01053545229097344, 0.002940919132918595, -0.04480731620857434, 0.007070134287372275, -0.005429903765385085, -0.0027277491307237823, -0.02566294678534473, 0.010431466117383298, -2.211656734538854e-05, -0.011678862276454496, 0.0244090503736724, -0.012330332698620357, -0.008825675772224739, -0.00043844833440379066, 0.0034218440118506826, -0.007288320019086239, -0.010257802179914927, -0.00041702957277951785, 0.007168678245572558, -0.022301373701176408, -0.007407689084970586, 0.0013788693314323178, -0.0588686498846766, 0.037255200166713485, -0.03954353234860605, -0.00276643457904255, -0.021786875693722556, 0.01606980987974518, 0.013285798958214643, -0.0040703301310357235, -0.005113468587465562, -0.07616177409580929, -0.01709996051146256, -0.0038043526282440744, -0.005248357664558358, -0.044302670279696275, 0.0008435376814401463, -7.62167470651221e-05, 0.008063090268425837, 0.0015206309161087336, -0.005401149538837368, -0.030166748655423688, 0.001638580968101434], "yaxis": "y"}, {"customdata": [["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"], ["moviles"]], "hovertemplate": "tipo=%{customdata[0]}<br>pc1=%{x}<br>pc2=%{y}<extra></extra>", "legendgroup": "moviles", "marker": {"color": "#FFA15A", "symbol": "circle"}, "mode": "markers", "name": "moviles", "orientation": "v", "showlegend": true, "type": "scatter", "x": [-0.005006277466376782, -0.0050062774663767965, -0.005006277466376782, -0.005006277466376791, -0.005006277466376791, -0.0050062774663767766, -0.0050062774663767766, -0.0050062774663767766, -0.005006277466376791, -0.005006277466376787, -0.005006277466376782, -0.005006277466376782, -0.005006277466376787, -0.005006277466376787, -0.0050062774663767766, -0.005006277466376782, -0.005006277466376791, -0.005006277466376782, -0.005006277466376782, -0.005006277466376787, -0.005006277466376791, -0.005006277466376791, -0.005006277466376762, -0.005006277466376791, -0.005006277466376787, -0.005006277466376782, -0.005006277466376762, -0.005006277466376787, -0.005006277466376782, -0.0050062774663767766, -0.005006277466376743, -0.005006277466376791, -0.005006277466376782, -0.005006277466376783, -0.005006277466376762, -0.005006277466376787, -0.005006277466376802, -0.005006277466376778, -0.005006277466376762, -0.005006277466376791, -0.005006277466376782, -0.005006277466376791, -0.0050062774663767766, -0.005006277466376762, -0.005006277466376782, -0.005006277466376772, -0.005006277466376758, -0.005006277466376772, -0.005006277466376782, -0.005006277466376782], "xaxis": "x", "y": [0.05322880878683998, -0.009858324241334815, -0.0034649400836017107, 0.0021628669487828377, -0.004564558250985961, -0.03493021498237256, -0.0007185955940724954, -0.007950816509493792, -0.07383728473272688, -0.01527172660844935, -0.012670421055856163, 0.00524234937729685, -0.0056930822896766285, 0.008224160047848822, 0.006524763608957322, -0.013445950329458571, -0.01857234704684938, -0.004713295204782229, -0.0014457094574812238, 0.001094885225605282, 0.003749271101702779, -0.009899351905326842, -0.00950401667810212, -0.00533358263147422, -0.003468642625950149, 0.011525837279437578, -0.003447212997162554, 0.004643021200427578, -0.0060279612319241145, -0.0014167181785613376, 0.02668144339360738, 0.007397401668837627, -0.003188858824600698, -0.008226740574623628, 0.06206391878247444, -0.01647107446768666, 0.009808096720628733, -0.006104932312182708, 0.0033701780176834555, -0.038696257043820376, -0.006554201779580414, 0.005511742603962724, -0.015832615915733806, 0.006494834390921818, 0.04657197679624932, 0.00438145961268024, -0.0011429560982397302, -0.0028255218284524933, 0.004547328486930099, -0.0010877112879352716], "yaxis": "y"}, {"customdata": [["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"], ["musica"]], "hovertemplate": "tipo=%{customdata[0]}<br>pc1=%{x}<br>pc2=%{y}<extra></extra>", "legendgroup": "musica", "marker": {"color": "#19d3f3", "symbol": "circle"}, "mode": "markers", "name": "musica", "orientation": "v", "showlegend": true, "type": "scatter", "x": [-0.005006277466376762, -0.005006277466376782, -0.005006277466376782, -0.005006277466376802, -0.0050062774663767766, -0.005006277466376782, -0.005006277466376767, -0.005006277466376782, -0.005006277466376791, -0.005006277466376821, -0.005006277466376782, -0.005006277466376783, -0.005006277466376787, -0.005006277466376782, -0.005006277466376791, -0.005006277466376762, -0.005006277466376782, -0.005006277466376772, -0.005006277466376791, -0.005006277466376762, -0.005006277466376772, -0.005006277466376791, -0.0050062774663767766, -0.005006277466376762, -0.005006277466376791, -0.005006277466376782, -0.005006277466376802, -0.005006277466376791, -0.005006277466376772, -0.005006277466376802, -0.005006277466376772, -0.005006277466376782, -0.005006277466376782, -0.005006277466376791, -0.005006277466376791, -0.005006277466376772, -0.005006277466376782, -0.005006277466376788, -0.005006277466376767, -0.005006277466376772, -0.005006277466376782, -0.005006277466376787, -0.005006277466376791, -0.005006277466376791, -0.005006277466376772, -0.005006277466376791, -0.005006277466376782, -0.005006277466376762, -0.0050062774663767766, -0.005006277466376791], "xaxis": "x", "y": [-0.0035733539251383653, -0.0009482642180821197, 0.004882453867405431, 0.28768557275536205, 0.009464609505601136, 0.00032107210007174835, -0.052168095021768175, -0.0012749596839367059, -0.008905046993319397, 0.017050850127157336, -0.0038199235151949824, -0.0016355502305410174, 0.008112731208506868, 0.004285747528387378, -0.0028069566391449533, -0.010987699848966179, -0.0025249421336880785, 0.008863356544651748, 0.002045222920434847, -0.007534177576975684, -0.00603871675350241, 0.002816236577220162, -0.005585269316241068, -0.005610611462209408, -0.005246870441057688, 0.0011360791978606434, -0.008677943766902575, -0.0028254450834542897, -0.01811586345323633, -0.0027278921057403097, -0.00982861330262818, -0.003949972505118432, 0.004316453880640103, -0.002876744010035218, -0.011819399735290512, -0.003969368017563711, -0.008382619378498232, -0.004030582770696889, -0.0020983323128610245, -0.006282207482068381, 0.006138826231082692, 0.003925940322001306, 0.004191088728032112, 0.0037970306650990547, -0.016290177417743832, -0.004731207939805703, -0.04191892818220131, 0.004792667130711286, -0.005068256481182035, 0.0014459898861737966], "yaxis": "y"}, {"customdata": [["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"], ["ordenadores"]], "hovertemplate": "tipo=%{customdata[0]}<br>pc1=%{x}<br>pc2=%{y}<extra></extra>", "legendgroup": "ordenadores", "marker": {"color": "#FF6692", "symbol": "circle"}, "mode": "markers", "name": "ordenadores", "orientation": "v", "showlegend": true, "type": "scatter", "x": [-0.005006277466376802, -0.005006277466376782, -0.005006277466376762, -0.005006277466376802, -0.005006277466376782, -0.005006277466376782, -0.005006277466376782, -0.005006277466376787, -0.005006277466376767, -0.005006277466376787, -0.005006277466376762, -0.005006277466376772, -0.005006277466376762, -0.005006277466376787, -0.005006277466376767, -0.005006277466376782, -0.005006277466376791, -0.005006277466376782, -0.0050062774663767766, -0.005006277466376782, -0.005006277466376782, -0.005006277466376762, -0.005006277466376787, -0.005006277466376791, -0.005006277466376782, -0.005006277466376794, -0.005006277466376762, -0.005006277466376782, -0.0050062774663767766, -0.0050062774663767766, -0.005006277466376767, -0.005006277466376782, -0.005006277466376762, -0.005006277466376782, -0.005006277466376782, -0.005006277466376791, -0.005006277466376787, -0.005006277466376772, -0.005006277466376762, -0.005006277466376791, -0.005006277466376767, -0.005006277466376772, -0.005006277466376782, -0.005006277466376791, -0.005006277466376772, -0.005006277466376762, -0.005006277466376772, -0.005006277466376791, -0.005006277466376782, -0.005006277466376772], "xaxis": "x", "y": [-0.0067606101966382936, -0.0014108988697292416, 0.00776091014682855, -0.0023752119845045928, -0.023777480784587763, -2.9367873611470272e-05, -0.0012940327942716013, -0.008153182249119323, -0.022754604286618484, 0.0027645009494206164, -0.004804114153346469, -0.012535576739387705, 0.0005742047547827455, 0.0012061584957387553, -0.004249200390330758, -0.008645375074353081, -0.019214082810424804, -0.0029395562769439867, 0.0052168968640578205, 0.00041990354936608686, -0.019002176670777852, -0.013779673646639313, 0.00445271893267186, 0.0034640882478972367, -0.010579202941195888, 0.0004176108416875729, -0.003367534123778488, 0.016568937812585092, -0.01913264986257654, -0.00045503715440074787, -0.002455212549479455, -0.009986928383692327, -0.0073684770195800355, -0.001000971169840125, -0.005015366914421216, -0.008291430729870297, -0.0007770024159547006, -0.0004517668967835151, 0.0032341392580283964, 0.0004889670113709183, -0.0036378305742009688, -0.0021901110258524203, 0.027992242041017336, -0.009567713841160522, 0.003444247873170709, -0.0007452644094810493, -0.0008635699602704277, -0.002717643899893556, -0.000921838230011935, 0.0017487900451920526], "yaxis": "y"}, {"customdata": [["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"], ["peliculas"]], "hovertemplate": "tipo=%{customdata[0]}<br>pc1=%{x}<br>pc2=%{y}<extra></extra>", "legendgroup": "peliculas", "marker": {"color": "#B6E880", "symbol": "circle"}, "mode": "markers", "name": "peliculas", "orientation": "v", "showlegend": true, "type": "scatter", "x": [-0.005006277466376762, -0.005006277466376782, -0.005006277466376762, -0.005006277466376782, -0.005006277466376772, -0.005006277466376767, -0.005006277466376772, -0.005006277466376772, -0.0050062774663767766, -0.005006277466376762, -0.005006277466376762, -0.0050062774663767766, -0.005006277466376762, -0.005006277466376762, -0.0050062774663767766, -0.005006277466376762, -0.005006277466376767, -0.005006277466376762, -0.005006277466376782, -0.005006277466376767, -0.005006277466376762, -0.005006277466376762, -0.005006277466376767, -0.005006277466376782, -0.005006277466376782, -0.0050062774663767575, -0.005006277466376772, -0.005006277466376772, -0.0050062774663767766, -0.005006277466376762, -0.005006277466376762, -0.005006277466376771, -0.005006277466376762, -0.005006277466376782, -0.0050062774663767766, -0.005006277466376772, -0.0050062774663767766, -0.0050062774663767766, -0.005006277466376762, -0.005006277466376762, -0.005006277466376782, -0.005006277466376767, -0.005006277466376762, -0.005006277466376767, -0.005006277466376762, -0.005006277466376762, -0.005006277466376762, -0.005006277466376767, -0.005006277466376782, -0.005006277466376772], "xaxis": "x", "y": [0.004189574291904081, -0.004469248066205872, -0.0034885779310578646, 0.005045064821842856, -0.004966751223350736, -0.005280832115565518, 0.0019835021985988312, -0.0020579736013176127, 8.237990171851289e-05, -0.012961399583138107, 0.02981547028423331, 0.002536674126750552, -0.002575611928862744, -0.005051932460341534, -0.02387687126431157, -0.005114187283342248, -0.005069634833117353, -0.010806796317192384, -0.009049985267563522, -0.0036927602177254893, -0.012846337442491385, -0.005284240647243168, -0.005509503342138972, -0.0001296631068421484, -0.001497791123577134, -0.0021995793279383654, -0.006433439766727109, 0.005645670658312538, -0.0002834336047894891, -0.0015070835246979522, -0.003932256624650676, -0.0019528932552147506, -0.013011717200469746, -0.00296595435535855, -0.003496411739344981, -0.003144864932453031, -0.006355245979332809, 0.0007975454217219324, -0.004289297475887954, -0.00677861914156772, -0.004913632443000169, -0.010922475213163675, -0.0027930161363387013, -0.0017316477104870412, -0.0009852655594684713, -0.010186629146995772, -0.00244421950189057, -0.00486274674479557, -0.006758567582501718, -0.006049450127607212], "yaxis": "y"}],
-                        {"autosize": false, "height": 600, "legend": {"title": {"text": "tipo"}, "tracegroupgap": 0}, "margin": {"t": 60}, "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "pie": [{"automargin": true, "type": "pie"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}}}, "width": 600, "xaxis": {"anchor": "y", "domain": [0.0, 1.0], "title": {"text": "pc1"}}, "yaxis": {"anchor": "x", "domain": [0.0, 1.0], "title": {"text": "pc2"}}},
-                        {"responsive": true}
-                    ).then(function(){
-
-var gd = document.getElementById('ec86aedc-dd7a-4949-b247-8edfdaa97e2b');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -1738,6 +1414,7 @@ cl_pred
 
 
 ```python
+# grafica interactiva
 pca_bow = pd.DataFrame({'pc1': proj['pc1'], 'pc2': proj['pc2'], 'tipo': t_data['file'],
                        'clus':cl_pred})
 
@@ -1797,6 +1474,8 @@ if (outputEl) {{
 
 
 #### Clasificación
+
+Veamos primero la clasificación del sentimiento (positivo 1, negativo 0)
 
 
 ```python
@@ -1888,7 +1567,7 @@ plt.show()
 ```
 
 
-![png](output_84_0.png)
+![png](output_86_0.png)
 
 
 
@@ -1900,8 +1579,10 @@ plt.show()
 ```
 
 
-![png](output_85_0.png)
+![png](output_87_0.png)
 
+
+Ahora, veamos la clasificación respecto al tópico o categoría (8 categorías)
 
 
 ```python
@@ -1911,11 +1592,6 @@ svm = SVC(kernel='linear')
 svm.fit(X_train, y_train)
 y_pred = svm.predict(X_test)
 print(metrics.classification_report(y_test, y_pred))
-
-plt.rcParams['figure.figsize'] = (8, 6)
-disp1 = metrics.plot_confusion_matrix(svm, X_test, y_test, cmap=plt.cm.Blues, normalize = None)
-disp1.ax_.set_title('Matriz de confusion. Sin normalizar',{'fontsize':15})
-plt.show()
 ```
 
                   precision    recall  f1-score   support
@@ -1936,7 +1612,15 @@ plt.show()
 
 
 
-![png](output_86_1.png)
+```python
+plt.rcParams['figure.figsize'] = (8, 6)
+disp1 = metrics.plot_confusion_matrix(svm, X_test, y_test, cmap=plt.cm.Blues, normalize = None)
+disp1.ax_.set_title('Matriz de confusion. Sin normalizar',{'fontsize':15})
+plt.show()
+```
+
+
+![png](output_90_0.png)
 
 
 ## BOW extensiones. TF-IDF (Salton and Buckley, 1988).
@@ -2263,31 +1947,18 @@ tfidf_df[55:65]
 
 
 
-#### Clasificación son TF-IDF
+#### Clasificación con TF-IDF
+
+Usando el sentimiento (positivo, negativo) como respuesta. 
 
 
 ```python
-X_train2, X_test2, y_train2, y_test2 = train_test_split(tfidf, y2, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(tfidf, y2, test_size=0.2, random_state=42)
 
 svm = SVC(kernel='linear')
-svm.fit(X_train2, y_train2)
-y_pred2 = svm.predict(X_test2)
-y_pred2
-```
-
-
-
-
-    array([1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
-           0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1,
-           1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0,
-           0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1], dtype=int8)
-
-
-
-
-```python
-print(metrics.classification_report(y_test2, y_pred2))
+svm.fit(X_train, y_train)
+y_pred = svm.predict(X_test)
+print(metrics.classification_report(y_test, y_pred))
 ```
 
                   precision    recall  f1-score   support
@@ -2304,29 +1975,25 @@ print(metrics.classification_report(y_test2, y_pred2))
 
 ```python
 plt.rcParams['figure.figsize'] = (8, 6)
-disp1 = metrics.plot_confusion_matrix(svm, X_test2, y_test2, cmap=plt.cm.Blues, normalize = None)
+disp1 = metrics.plot_confusion_matrix(svm, X_test, y_test, cmap=plt.cm.Blues, normalize = None)
 disp1.ax_.set_title('Matriz de confusion. Sin normalizar',{'fontsize':15})
 plt.show()
 ```
 
 
-![png](output_92_0.png)
+![png](output_95_0.png)
 
+
+Ahora para las 8 categorías que corresponden a los tópicos. ¿Cómo es respecto a BOW?
 
 
 ```python
-X_train2, X_test2, y_train2, y_test2 = train_test_split(tfidf, y1, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(tfidf, y1, test_size=0.2, random_state=42)
 
 svm = SVC(kernel='linear')
-svm.fit(X_train2, y_train2)
-y_pred2 = svm.predict(X_test2)
-print(metrics.classification_report(y_test2, y_pred2))
-
-plt.rcParams['figure.figsize'] = (8, 6)
-disp1 = metrics.plot_confusion_matrix(svm, X_test2, y_test2, cmap=plt.cm.Blues, normalize = None)
-disp1.ax_.set_title('Matriz de confusion. Sin normalizar',{'fontsize':15})
-plt.show()
-
+svm.fit(X_train, y_train)
+y_pred = svm.predict(X_test)
+print(metrics.classification_report(y_test, y_pred))
 ```
 
                   precision    recall  f1-score   support
@@ -2347,7 +2014,15 @@ plt.show()
 
 
 
-![png](output_93_1.png)
+```python
+plt.rcParams['figure.figsize'] = (8, 6)
+disp1 = metrics.plot_confusion_matrix(svm, X_test, y_test, cmap=plt.cm.Blues, normalize = None)
+disp1.ax_.set_title('Matriz de confusion. Sin normalizar',{'fontsize':15})
+plt.show()
+```
+
+
+![png](output_98_0.png)
 
 
 Si bien los modelos basados en representaciones tipo BOW son muy útiles para ciertas tareas y ciertos corpus de textos, para otros no es la mejor opción. 
@@ -2645,9 +2320,9 @@ Cristian Cardellino: Spanish Billion Words Corpus and Embeddings (March 2016), e
 
 
 
-## Algunas arquitecturas de redes profundas para análisis de textos
+# Algunas arquitecturas de redes profundas para análisis de textos
 
-Una red neuronal profunda.
+## Redes neuronales profundas.
 
 <img src="figs/deep1.png" height="40%" width="40%"/>
 
@@ -2686,12 +2361,6 @@ Aprender representaciones de los datos de manera útil:
 Una de las características principales de los métodos de aprendizaje profundo, es no solo aprender una función que mapee un conjunto de datos de entrada a uno de salida, sino __la representación de los datos que sea *mejor* para el problema a resolver__.
 
 Estas representaciones son aprendidas en forma jerárquica, expresadas en términos de otras representaciones más simples. De esta forma, Deep Learning permite a la computadora construir conceptos complejos mediante complejos simples.
-
-Algunas aplicaciones. 
-
-Image captioning.
-
-<img src="figs/encoder-decoder1.png" height="60%" width="60%"/>
 
 Algunas aplicaciones. 
 
@@ -2836,3 +2505,174 @@ Tensores para secuencias
 - __Iteración__. El número de batches necesario para completar una época.
 
 __Ejemplo__. Clasificación de sentimiento en reseñas de películas (En Notebook)
+
+## Redes convolucionales
+
+
+<center>
+<img src="figs/cnn2.png" height="80%" width="80%"/>
+<center>
+
+- Tipo especializado de red neuronal para procesar datos con topología tipo grid (1-D, 2-D, 3-D, etc...)
+- Características a resaltar:
+    - conexiones sparse
+    - compartir parámetros
+- Generalizan automáticamente para traslaciones espaciales de las entradas
+- Inicialmente diseñadas para su aplicación en imágenes, pero su uso se ha extendido en textos
+
+### Convolución
+
+\begin{align*}
+    h(t)=(f*g)(t)=\int f(s)g(t-s)ds
+\end{align*}
+
+Y para el caso discreto:
+\begin{align*}
+    h(t)=(f*g)(t)=\sum_{s=-\infty}^\infty f(s)g(t-s)
+\end{align*}
+
+En CNNs,
+- La funci\'on $f$ es el \emph{input} $I$ (Tensor)
+- La funci\'on $g$ es el \emph{kernel} $K$ (Tensor de parámetros)
+- La salida $h$ es el \emph{mapeo de caracter\'isticas (feature map)}
+
+En CNNs, generalmente realizamos convolución en dos o más ejes. Por ejemplo, una imagen $I$ en 2-D con un kernel $K$ 2-D.
+
+\begin{align*}
+    H(i,j)=(I*K)(i,j)=\sum_{m}\sum_{n}I(m,n)K(i-m,j-n)
+\end{align*}
+
+Y también puede expresarse como una forma de cross-correlation:
+
+\begin{align*}
+    H(i,j)=(I*K)(i,j)=\sum_{m}\sum_{n}I(i+m,j+n)K(m,n)
+\end{align*}
+
+Pero, en términos prácticos ¿qué es la convolución? ¿para qué nos sirve?
+
+En el caso discreto, la convolución es como una multiplicación de matrices, pero con otra dinámica:
+
+<center>
+<img src="figs/conv4.jpg" height="35%" width="35%"/>
+<center>
+
+(animación)
+
+La dinámica de las operaciones de convolución depende de varios factores. Los dos más importantes son `stride` y `zero padding` (ver animación).
+
+Un esquema común de una capa de convolución se ve así:
+
+<center>
+<img src="figs/conv0.jpg" height="35%" width="35%"/>
+<center>
+
+### Pooling
+
+Una operación para reducir el tamaño de la transformación o mapeo usando alguna función que resume la información contenida en ciertas regiones.
+
+Observa que, el pooling tiene como input una capa que puede ser el resultado de una convolución o \emph{una transformación de ella}. Es común realizar pooling a una capa de convolución a la que se le aplica alguna función de activación.
+
+\begin{align*}
+    \text{pooling}(relu(conv))
+\end{align*}
+
+<center>
+<img src="figs/conv21.jpg" height="35%" width="35%"/>
+<img src="figs/conv22.png" height="35%" width="35%"/>
+<center>
+
+Demos ilustrativos:
+- [MNIST Stanford](https://cs.stanford.edu/people/karpathy/convnetjs/demo/mnist.html)
+- [Adam Harley, Carnegie Mellon University](https://www.cs.ryerson.ca/~aharley/vis/)
+- [Convolución en tensores. Stanford](https://cs231n.github.io/convolutional-networks/)
+
+Otros temas interesantes relacionados con CNN (que no veremos por ahora):
+
+- Visualización de las capas de convolución. ¿Qué está aprendiendo la red?
+- Transfer learning. Usar pesos aprendidos en otros corpus de imágenes para un problema específico, aunque tengamos pocos datos.
+
+### Redes convolucionales para textos
+
+Una convolución para datos tipo secuencia (de cualquier tipo), puede definirse como una convolución 1-D:
+
+<center>
+<img src="figs/cnn_texts1.png" height="60%" width="60%"/>
+<center>
+
+Zhang et. al., Dive into Deep Learning, 2020
+
+Y como antes, podemos incluir más canales:
+
+<center>
+<img src="figs/cnn_texts2.png" height="50%" width="50%"/>
+<center>
+
+
+Zhang et. al., Dive into Deep Learning, 2020
+
+En datos tipo secuencia, es más común considerar los canales como variables indexados también por el tiempo $t$, lo que resulta en una secuencia multivariada. Este caso es similar a la convolución 2-D con un solo canal:
+
+
+<center>
+<img src="figs/cnn_texts3.png" height="50%" width="50%"/>
+<center>
+
+
+Zhang et. al., Dive into Deep Learning, 2020
+
+Convolución 1-D para textos con padding.
+
+
+<center>
+<img src="figs/cnn_texts5.png" height="40%" width="40%"/>
+<center>
+
+
+Curso Stanford (2020)
+
+Convolución 1-D con múltiples filtros y padding.
+
+
+
+<img src="figs/cnn_texts6.png" height="40%" width="40%"/>
+
+
+
+Curso Stanford (2020)
+
+Convolución 1-D con múltiples filtros, padding y max pooling over time.
+
+
+<img src="figs/cnn_texts7.png" height="40%" width="40%"/>
+
+
+
+Curso Stanford (2020)
+
+Convolución 1-D con múltiples filtros, padding y avg pooling over time.
+
+
+<img src="figs/cnn_texts8.png" height="40%" width="40%"/>
+
+
+
+Curso Stanford (2020)
+
+Una arquitectura general, puede ilustrarse mediante:
+
+
+<img src="figs/cnn_texts9.png" height="50%" width="50%"/>
+
+Yoon Kim, 2014.
+
+En este caso, el canal estático representa embeddings pre-entrenados, y el canal dinámico embeddings que se entrenan en el proceso vía fine-tunning.
+
+O también:
+
+
+<img src="figs/cnn_texts10.png" height="40%" width="40%"/>
+
+Ye Zhang et al., 2016.
+
+
+Ejemplo en Notebook
